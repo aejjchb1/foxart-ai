@@ -5,6 +5,19 @@
 
 const { getStore } = require('@netlify/blobs');
 
+// Blobs 저장소를 여는 헬퍼.
+// 환경변수에 siteID/token이 있으면 그것을 명시적으로 사용(가장 확실),
+// 없으면 자동 구성으로 시도합니다.
+function openStore() {
+  const opts = { name: 'foxart-analysis', consistency: 'strong' };
+  const siteID = process.env.BLOBS_SITE_ID || process.env.SITE_ID;
+  const token = process.env.BLOBS_TOKEN;
+  if (siteID && token) {
+    return getStore({ name: opts.name, consistency: opts.consistency, siteID: siteID, token: token });
+  }
+  return getStore(opts);
+}
+
 exports.handler = async function (event) {
   // POST가 아니면 무시 (백그라운드 함수는 응답값이 브라우저로 안 감)
   if (event.httpMethod !== 'POST') {
@@ -25,7 +38,8 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: 'jobId 누락' };
   }
 
-  const store = getStore({ name: 'foxart-analysis', consistency: 'strong' });
+  // Blobs 저장소 열기. 환경이 자동 구성 안 되는 경우를 대비해 siteID/token을 명시.
+  const store = openStore();
 
   const API_KEY = process.env.ANTHROPIC_API_KEY;
   if (!API_KEY) {

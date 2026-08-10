@@ -4,6 +4,17 @@
 
 const { getStore } = require('@netlify/blobs');
 
+// Blobs 저장소를 여는 헬퍼 (background 함수와 동일).
+function openStore() {
+  const opts = { name: 'foxart-analysis', consistency: 'strong' };
+  const siteID = process.env.BLOBS_SITE_ID || process.env.SITE_ID;
+  const token = process.env.BLOBS_TOKEN;
+  if (siteID && token) {
+    return getStore({ name: opts.name, consistency: opts.consistency, siteID: siteID, token: token });
+  }
+  return getStore(opts);
+}
+
 exports.handler = async function (event) {
   const CORS = {
     'Access-Control-Allow-Origin': '*',
@@ -29,7 +40,7 @@ exports.handler = async function (event) {
   }
 
   try {
-    const store = getStore({ name: 'foxart-analysis', consistency: 'strong' });
+    const store = openStore();
     const data = await store.get(jobId, { type: 'json' });
 
     if (!data) {
