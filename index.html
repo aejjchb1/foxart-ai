@@ -43,7 +43,7 @@
 		${t?' idx="'+t.toString()+'"':""}
 		${r&&re[r]?` type="${r}"`:""}
 		${e.text&&0<e.text.length?' hasCustomPrompt="1"':""}
-		/>`):""}function _e(e){return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>${A}<p:notes xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Slide Image Placeholder 1"/><p:cNvSpPr><a:spLocks noGrp="1" noRot="1" noChangeAspect="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldImg"/></p:nvPr></p:nvSpPr><p:spPr/></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Notes Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="body" idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:rPr lang="en-US" dirty="0"/><a:t>${O((e=>{let t="";return e._slideObjects.forEach(e=>{e._type===I.notes&&(t+=null!=e&&e.text&&e.text[0]?e.text[0].text:"")}),t.replace(/\r*\n/g,A)})(e))}</a:t></a:r><a:endParaRPr lang="en-US" dirty="0"/></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="4" name="Slide Number Placeholder 3"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldNum" sz="quarter" idx="10"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:fld id="${ae}" type="slidenum"><a:rPr lang="en-US"/><a:t>${e._slideNum}</a:t></a:fld><a:endParaRPr lang="en-US"/></a:p></p:txBody></p:sp></p:spTree><p:extLst><p:ext uri="{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}"><p14:creationId xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" val="1024086991"/></p:ext></p:extLst></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>`}function Ne(e,t,r){return Ee(e[r-1],[{target:`../slideLayouts/slideLayout${((t,r,a)=>{for(let e=0;e<r.length;e++)if(r[e]._name===t[a-1]._slideLayout._name)return e+1;return 1})(e,t,r)}.xml`,type:"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout"},{target:`../notesSlides/notesSlide${r}.xml`,type:"http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide"}])}class Fe{set layout(e){var t=this.LAYOUTS[e];if(!t)throw new Error("UNKNOWN-LAYOUT");this._layout=e,this._presLayout=t}get layout(){return this._layout}get version(){return this._version}set author(e){this._author=e}get author(){return this._author}set company(e){this._company=e}get company(){return this._company}set revision(e){this._revision=e}get revision(){return this._revision}set subject(e){this._subject=e}get subject(){return this._subject}set theme(e){this._theme=e}get theme(){return this._theme}set title(e){this._title=e}get title(){return this._title}set rtlMode(e){this._rtlMode=e}get rtlMode(){return this._rtlMode}get masterSlide(){return this._masterSlide}get slides(){return this._slides}get sections(){return this._sections}get slideLayouts(){return this._slideLayouts}get AlignH(){return this._alignH}get AlignV(){return this._alignV}get ChartType(){return this._chartType}get OutputType(){return this._outputType}get presLayout(){return this._presLayout}get SchemeColor(){return this._schemeColor}get ShapeType(){return this._shapeType}get charts(){return this._charts}get colors(){return this._colors}get shapes(){return this._shapes}constructor(){this._version="4.0.1",this._alignH=$,this._alignV=ee,this._chartType=K,this._outputType=a,this._schemeColor=n,this._shapeType=Z,this._charts=w,this._colors=te,this._shapes=b,this.addNewSlide=e=>{var t=0<this.sections.length&&0<this.sections[this.sections.length-1]._slides.filter(e=>e._slideNum===this.slides[this.slides.length-1]._slideNum).length;return e.sectionTitle=t?this.sections[this.sections.length-1].title:null,this.addSlide(e)},this.getSlide=t=>this.slides.filter(e=>e._slideNum===t)[0],this.setSlideNumber=e=>{this.masterSlide._slideNumberProps=e,this.slideLayouts.filter(e=>e._name===t)[0]._slideNumberProps=e},this.createChartMediaRels=(e,r,t)=>{e._relsChart.forEach(e=>t.push(ge(e,r))),e._relsMedia.forEach(t=>{if("online"!==t.type&&"hyperlink"!==t.type){let e=t.data&&"string"==typeof t.data?t.data:"";(e.includes(",")||e.includes(";"))&&e.includes(",")?e.includes(";")||(e="image/png;"+e):e="image/png;base64,"+e,r.file(t.Target.replace("..","ppt"),e.split(",").pop(),{base64:!0})}})},this.writeFileToBrowser=(r,a)=>c(this,void 0,void 0,function*(){let t=document.createElement("a");if(t.setAttribute("style","display:none;"),t.dataset.interception="off",document.body.appendChild(t),window.URL.createObjectURL){let e=window.URL.createObjectURL(new Blob([a],{type:"application/vnd.openxmlformats-officedocument.presentationml.presentation"}));return t.href=e,t.download=r,t.click(),setTimeout(()=>{window.URL.revokeObjectURL(e),document.body.removeChild(t)},100),yield Promise.resolve(r)}}),this.exportPresentation=s=>c(this,void 0,void 0,function*(){let o=[],t=[],i=new B;return this.slides.forEach(e=>{t=t.concat(Ce(e))}),this.slideLayouts.forEach(e=>{t=t.concat(Ce(e))}),t=t.concat(Ce(this.masterSlide)),yield Promise.all(t).then(()=>c(this,void 0,void 0,function*(){var r,e,t,a,n;return this.slides.forEach(e=>{var r;e._slideLayout&&((r=e)._slideLayout._slideObjects||[]).forEach(t=>{t._type===I.placeholder&&0===r._slideObjects.filter(e=>e.options&&e.options.placeholder===t.options.placeholder).length&&fe(r,[{text:""}],t.options,!1)})}),i.folder("_rels"),i.folder("docProps"),i.folder("ppt").folder("_rels"),i.folder("ppt/charts").folder("_rels"),i.folder("ppt/embeddings"),i.folder("ppt/media"),i.folder("ppt/slideLayouts").folder("_rels"),i.folder("ppt/slideMasters").folder("_rels"),i.folder("ppt/slides").folder("_rels"),i.folder("ppt/theme"),i.folder("ppt/notesMasters").folder("_rels"),i.folder("ppt/notesSlides").folder("_rels"),i.file("[Content_Types].xml",((e,t,r)=>{let a='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+A;return a=(a=(a=(a=(a=a+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+'<Default Extension="xml" ContentType="application/xml"/>')+'<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+'<Default Extension="jpeg" ContentType="image/jpeg"/>')+'<Default Extension="jpg" ContentType="image/jpg"/>'+'<Default Extension="svg" ContentType="image/svg+xml"/>')+'<Default Extension="png" ContentType="image/png"/>'+'<Default Extension="gif" ContentType="image/gif"/>')+'<Default Extension="m4v" ContentType="video/mp4"/>'+'<Default Extension="mp4" ContentType="video/mp4"/>',e.forEach(e=>{(e._relsMedia||[]).forEach(e=>{"image"===e.type||"online"===e.type||"chart"===e.type||"m4v"===e.extn||a.includes(e.type)||(a+='<Default Extension="'+e.extn+'" ContentType="'+e.type+'"/>')})}),a=(a=a+'<Default Extension="vml" ContentType="application/vnd.openxmlformats-officedocument.vmlDrawing"/>'+'<Default Extension="xlsx" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>')+'<Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>'+'<Override PartName="/ppt/notesMasters/notesMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.notesMaster+xml"/>',e.forEach((e,t)=>{a=a+`<Override PartName="/ppt/slideMasters/slideMaster${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/>`+`<Override PartName="/ppt/slides/slide${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>`,e._relsChart.forEach(e=>{a+=`<Override PartName="${e.Target}" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>`})}),a=(a=a+'<Override PartName="/ppt/presProps.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presProps+xml"/>'+'<Override PartName="/ppt/viewProps.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml"/>')+'<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>'+'<Override PartName="/ppt/tableStyles.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml"/>',t.forEach((e,t)=>{a+=`<Override PartName="/ppt/slideLayouts/slideLayout${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/>`,(e._relsChart||[]).forEach(e=>{a+=' <Override PartName="'+e.Target+'" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>'})}),e.forEach((e,t)=>{a+=`<Override PartName="/ppt/notesSlides/notesSlide${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml"/>`}),r._relsChart.forEach(e=>{a+=' <Override PartName="'+e.Target+'" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>'}),r._relsMedia.forEach(e=>{"image"===e.type||"online"===e.type||"chart"===e.type||"m4v"===e.extn||a.includes(e.type)||(a+=' <Default Extension="'+e.extn+'" ContentType="'+e.type+'"/>')}),a=(a+=' <Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>')+' <Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>'+"</Types>"})(this.slides,this.slideLayouts,this.masterSlide)),i.file("_rels/.rels",`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>${A}<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+		/>`):""}function _e(e){return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>${A}<p:notes xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="2" name="Slide Image Placeholder 1"/><p:cNvSpPr><a:spLocks noGrp="1" noRot="1" noChangeAspect="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldImg"/></p:nvPr></p:nvSpPr><p:spPr/></p:sp><p:sp><p:nvSpPr><p:cNvPr id="3" name="Notes Placeholder 2"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="body" idx="1"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:rPr lang="en-US" dirty="0"/><a:t>${O((e=>{let t="";return e._slideObjects.forEach(e=>{e._type===I.notes&&(t+=null!=e&&e.text&&e.text[0]?e.text[0].text:"")}),t.replace(/\r*\n/g,A)})(e))}</a:t></a:r><a:endParaRPr lang="en-US" dirty="0"/></a:p></p:txBody></p:sp><p:sp><p:nvSpPr><p:cNvPr id="4" name="Slide Number Placeholder 3"/><p:cNvSpPr><a:spLocks noGrp="1"/></p:cNvSpPr><p:nvPr><p:ph type="sldNum" sz="quarter" idx="10"/></p:nvPr></p:nvSpPr><p:spPr/><p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:fld id="${ae}" type="slidenum"><a:rPr lang="en-US"/><a:t>${e._slideNum}</a:t></a:fld><a:endParaRPr lang="en-US"/></a:p></p:txBody></p:sp></p:spTree><p:extLst><p:ext uri="{BB962C8B-B14F-4D97-AF65-F5344CB8AC3E}"><p14:creationId xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" val="1024086991"/></p:ext></p:extLst></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:notes>`}function Ne(e,t,r){return Ee(e[r-1],[{target:`../slideLayouts/slideLayout${((t,r,a)=>{for(let e=0;e<r.length;e++)if(r[e]._name===t[a-1]._slideLayout._name)return e+1;return 1})(e,t,r)}.xml`,type:"http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout"},{target:`../notesSlides/notesSlide${r}.xml`,type:"http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide"}])}class Fe{set layout(e){var t=this.LAYOUTS[e];if(!t)throw new Error("UNKNOWN-LAYOUT");this._layout=e,this._presLayout=t}get layout(){return this._layout}get version(){return this._version}set author(e){this._author=e}get author(){return this._author}set company(e){this._company=e}get company(){return this._company}set revision(e){this._revision=e}get revision(){return this._revision}set subject(e){this._subject=e}get subject(){return this._subject}set theme(e){this._theme=e}get theme(){return this._theme}set title(e){this._title=e}get title(){return this._title}set rtlMode(e){this._rtlMode=e}get rtlMode(){return this._rtlMode}get masterSlide(){return this._masterSlide}get slides(){return this._slides}get sections(){return this._sections}get slideLayouts(){return this._slideLayouts}get AlignH(){return this._alignH}get AlignV(){return this._alignV}get ChartType(){return this._chartType}get OutputType(){return this._outputType}get presLayout(){return this._presLayout}get SchemeColor(){return this._schemeColor}get ShapeType(){return this._shapeType}get charts(){return this._charts}get colors(){return this._colors}get shapes(){return this._shapes}constructor(){this._version="4.0.1",this._alignH=$,this._alignV=ee,this._chartType=K,this._outputType=a,this._schemeColor=n,this._shapeType=Z,this._charts=w,this._colors=te,this._shapes=b,this.addNewSlide=e=>{var t=0<this.sections.length&&0<this.sections[this.sections.length-1]._slides.filter(e=>e._slideNum===this.slides[this.slides.length-1]._slideNum).length;return e.sectionTitle=t?this.sections[this.sections.length-1].title:null,this.addSlide(e)},this.getSlide=t=>this.slides.filter(e=>e._slideNum===t)[0],this.setSlideNumber=e=>{this.masterSlide._slideNumberProps=e,this.slideLayouts.filter(e=>e._name===t)[0]._slideNumberProps=e},this.createChartMediaRels=(e,r,t)=>{e._relsChart.forEach(e=>t.push(ge(e,r))),e._relsMedia.forEach(t=>{if("online"!==t.type&&"hyperlink"!==t.type){let e=t.data&&"string"==typeof t.data?t.data:"";(e.includes(",")||e.includes(";"))&&e.includes(",")?e.includes(";")||(e="image/png;"+e):e="image/png;base64,"+e,r.file(t.Target.replace("..","ppt"),e.split(",").pop(),{base64:!0})}})},this.writeFileToBrowser=(r,a)=>c(this,void 0,void 0,function*(){let t=document.createElement("a");if(t.setAttribute("style","display:none;"),t.dataset.interception="off",document.body.appendChild(t),window.URL.createObjectURL){let e=window.URL.createObjectURL(new Blob([a],{type:"application/vnd.openxmlformats-officedocument.presentationml.presentation"}));return t.href=e,t.download=r,t.click(),setTimeout(()=>{window.URL.revokeObjectURL(e),document.body.removeChild(t)},30000),yield Promise.resolve(r)}}),this.exportPresentation=s=>c(this,void 0,void 0,function*(){let o=[],t=[],i=new B;return this.slides.forEach(e=>{t=t.concat(Ce(e))}),this.slideLayouts.forEach(e=>{t=t.concat(Ce(e))}),t=t.concat(Ce(this.masterSlide)),yield Promise.all(t).then(()=>c(this,void 0,void 0,function*(){var r,e,t,a,n;return this.slides.forEach(e=>{var r;e._slideLayout&&((r=e)._slideLayout._slideObjects||[]).forEach(t=>{t._type===I.placeholder&&0===r._slideObjects.filter(e=>e.options&&e.options.placeholder===t.options.placeholder).length&&fe(r,[{text:""}],t.options,!1)})}),i.folder("_rels"),i.folder("docProps"),i.folder("ppt").folder("_rels"),i.folder("ppt/charts").folder("_rels"),i.folder("ppt/embeddings"),i.folder("ppt/media"),i.folder("ppt/slideLayouts").folder("_rels"),i.folder("ppt/slideMasters").folder("_rels"),i.folder("ppt/slides").folder("_rels"),i.folder("ppt/theme"),i.folder("ppt/notesMasters").folder("_rels"),i.folder("ppt/notesSlides").folder("_rels"),i.file("[Content_Types].xml",((e,t,r)=>{let a='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+A;return a=(a=(a=(a=(a=a+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+'<Default Extension="xml" ContentType="application/xml"/>')+'<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+'<Default Extension="jpeg" ContentType="image/jpeg"/>')+'<Default Extension="jpg" ContentType="image/jpg"/>'+'<Default Extension="svg" ContentType="image/svg+xml"/>')+'<Default Extension="png" ContentType="image/png"/>'+'<Default Extension="gif" ContentType="image/gif"/>')+'<Default Extension="m4v" ContentType="video/mp4"/>'+'<Default Extension="mp4" ContentType="video/mp4"/>',e.forEach(e=>{(e._relsMedia||[]).forEach(e=>{"image"===e.type||"online"===e.type||"chart"===e.type||"m4v"===e.extn||a.includes(e.type)||(a+='<Default Extension="'+e.extn+'" ContentType="'+e.type+'"/>')})}),a=(a=a+'<Default Extension="vml" ContentType="application/vnd.openxmlformats-officedocument.vmlDrawing"/>'+'<Default Extension="xlsx" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>')+'<Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>'+'<Override PartName="/ppt/notesMasters/notesMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.notesMaster+xml"/>',e.forEach((e,t)=>{a=a+`<Override PartName="/ppt/slideMasters/slideMaster${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/>`+`<Override PartName="/ppt/slides/slide${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>`,e._relsChart.forEach(e=>{a+=`<Override PartName="${e.Target}" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>`})}),a=(a=a+'<Override PartName="/ppt/presProps.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presProps+xml"/>'+'<Override PartName="/ppt/viewProps.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml"/>')+'<Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>'+'<Override PartName="/ppt/tableStyles.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml"/>',t.forEach((e,t)=>{a+=`<Override PartName="/ppt/slideLayouts/slideLayout${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/>`,(e._relsChart||[]).forEach(e=>{a+=' <Override PartName="'+e.Target+'" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>'})}),e.forEach((e,t)=>{a+=`<Override PartName="/ppt/notesSlides/notesSlide${t+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml"/>`}),r._relsChart.forEach(e=>{a+=' <Override PartName="'+e.Target+'" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>'}),r._relsMedia.forEach(e=>{"image"===e.type||"online"===e.type||"chart"===e.type||"m4v"===e.extn||a.includes(e.type)||(a+=' <Default Extension="'+e.extn+'" ContentType="'+e.type+'"/>')}),a=(a+=' <Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>')+' <Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>'+"</Types>"})(this.slides,this.slideLayouts,this.masterSlide)),i.file("_rels/.rels",`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>${A}<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
 		<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>
 		<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
 		<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>
@@ -1944,7 +1944,7 @@ function quickTest(mode){
   if(mode==='low'){ isLowGrade=true; isAdult=false; applyKidsArrays(); studentAge='8'; }
   else if(mode==='adult'){ isLowGrade=false; isAdult=true; applyAdultArrays(); studentAge='30'; }
   else { isLowGrade=false; isAdult=false; applyStandardArrays(); studentAge='14'; }
-  studentName='테스트'+nm;
+  studentName='테스트';
   studentGrade='';
   studentGender=''; studentSibling=''; studentCareer=''; studentMbti=''; studentInterest=''; studentColor='';
   mindMemo=new Array(6).fill('');
@@ -2632,7 +2632,7 @@ async function submitQuiz(){
   (function(){
     const w=document.getElementById('ai-warn');
     if(!w) return;
-    if(aiOk){ w.style.display='none'; return; }
+    w.style.display='none'; return;
     w.style.display='block';
     w.innerHTML='⚠ AI 분석에 실패했습니다 — 지금 리포트는 <b>간이 분석본</b>이라 품질이 낮습니다.'
       + '<br><span style="opacity:.8;font-size:10px">사유: '+(aiErr||'알 수 없음')+' · 인터넷 연결을 확인한 뒤 다시 분석해 주세요</span>'
@@ -2716,6 +2716,18 @@ function buildFoxArtDeck(PPTXLib, r){
 
   // ── 데이터 ──
   const name = r.name || '학생';
+  // 받침 자동 판별 조사 함수 (이름 뒤 조사를 자연스럽게)
+  const _hasJong = (s)=>{ if(!s) return false; const c=s.charCodeAt(s.length-1); if(c<0xAC00||c>0xD7A3) return false; return (c-0xAC00)%28!==0; };
+  const _josa = (s,a,b)=>_hasJong(s)?a:b;  // a=받침있을때, b=없을때
+  const jEunNeun = _josa(name,'은','는');
+  const jIGa = _josa(name,'이','가');
+  const jEulReul = _josa(name,'을','를');
+  const STRONG_PINK = "E86B8E";  // 강점 3개 통일 핑크
+  // 성인 결과지만 이름 뒤 '님' (7쪽 유형소개·표지·헤더는 조사 없어 자동 제외)
+  const nameHon = isAdultReport ? (name + '님') : name;
+  const hEunNeun = _josa(nameHon,'은','는');
+  const hIGa = _josa(nameHon,'이','가');
+  const hEulReul = _josa(nameHon,'을','를');
   const ageStr = r.age ? `${r.age}세` : (r.grade || '');
   const sc = r.scores || {a:85,b:85,c:85,d:85,e:80};
   const trust = r.trust || 90;
@@ -2759,17 +2771,17 @@ function buildFoxArtDeck(PPTXLib, r){
    const t1=ks[0],t2=ks[1],lo=ks[4], A=k=>AREA[k];
    const bw=v=> v>=82?'매우 높게': v>=70?'뚜렷하게': v>=60?'안정적으로':'서서히';
    return {
-    s6_인지:{개발영역코멘트:`${A(lo).lab} 영역은 아직 자라나는 중이에요. 조급해하지 않아도 괜찮아요. ${name} 작가가 좋아하는 활동과 자연스럽게 연결해 조금씩 연습하면, 이 부분도 든든한 힘이 되어 줄 거예요.`},
-    s7_좌우뇌:{코멘트:`${name} 작가는 ${A(t1).tr}이 돋보이는 ${A(t1).no}입니다`},
+    s6_인지:{개발영역코멘트:`${A(lo).lab} 영역은 아직 자라나는 중이에요. 조급해하지 않아도 괜찮아요. ${nameHon}${hIGa} 좋아하는 활동과 자연스럽게 연결해 조금씩 연습하면, 이 부분도 든든한 힘이 되어 줄 거예요.`},
+    s7_좌우뇌:{코멘트:`${nameHon}${hEunNeun} ${A(t1).tr}이 돋보이는 ${A(t1).no}입니다`},
     s8_신경전달:{코멘트:[`창작할 때 성취의 에너지가 ${bw(sc.a)} 솟아요`,`사람과 이어질 때 따뜻함이 ${bw(sc.c)} 살아나요`,`완성의 기쁨에서 안정감을 ${bw(sc.c)} 느껴요`,`몰입할 때 집중이 ${bw(sc.b)} 깊어져요`,`평가 앞에서 긴장이 ${bw(100-sc.e)} 나타날 수 있어요`]},
     s9_무의식:{핵심한줄:`${A(t1).un}이 작품 속에 담겨 있습니다`, 테마카드:ks.map(k=>({태그:A(k).th[0],제목:A(k).th[1],설명:A(k).th[2]}))},
-    s10_심리:{인트로:`${A(t1).tr}을 지닌 ${name} 작가는 자신만의 색을 찾아가는 중이에요${r.interest?`. ${r.interest} 같은 관심사도 좋은 재료가 돼요`:''}`},
-    s11_욕구신념:{욕구:ks.slice(0,4).map(k=>({태그:A(k).nd[0],제목:A(k).nd[1],설명:A(k).nd[2]})),코멘트:`${A(t1).un}이 채워질 때 ${name} 작가의 창의력이 가장 환하게 피어납니다`},
+    s10_심리:{인트로:`${A(t1).tr}을 지닌 ${nameHon}${hEunNeun} 자신만의 색을 찾아가는 중이에요${r.interest?`. ${r.interest} 같은 관심사도 좋은 재료가 돼요`:''}`},
+    s11_욕구신념:{욕구:ks.slice(0,4).map(k=>({태그:A(k).nd[0],제목:A(k).nd[1],설명:A(k).nd[2]})),코멘트:`${A(t1).un}이 채워질 때 ${nameHon}의 창의력이 가장 환하게 피어납니다`},
     s12_회복강점:{핵심강점:ks.slice(0,4).map(k=>({제목:A(k).st[0],설명:A(k).st[1]}))},
-    s13_로드맵:{비전:`${A(t1).tr}을 바탕으로 ${name} 작가만의 작품 세계를 넓혀갈 거예요`},
-    s16_결론:{헤드라인:`${A(t1).tr}의 ${A(t1).no}`,결론줄:[`${A(t1).tr}이 돋보이는 ${name} 작가입니다`,`${A(t2).tr}도 함께 빛나는 창작자`,`지금의 탐구가 훗날 멋진 작품이 됩니다`]},
-    s17_진로:{전공:ks.map(k=>({전공명:A(k).mj[0],설명:A(k).mj[1]})),직업군:[...ks.map(k=>A(k).jb),'전시 기획자'],코멘트:`${A(t1).tr}과 ${A(t2).tr}은 AI 시대에 ${name} 작가만의 빛나는 예술 자산이 됩니다`},
-    s18_숨은재능:{재능:ks.map(k=>({제목:A(k).ta[0],설명:A(k).ta[1]})),공부:[...ks.map(k=>({제목:A(k).sd[0],설명:A(k).sd[1]})),{제목:'악기·운동',설명:'몸과 감각으로 익히는 또 다른 표현'}],코멘트:`${name} 작가가 지금 넓게 배워 두는 모든 것이 미래 작품의 재료가 됩니다`}
+    s13_로드맵:{비전:`${A(t1).tr}을 바탕으로 ${nameHon}만의 작품 세계를 넓혀갈 거예요`},
+    s16_결론:{헤드라인:`${A(t1).tr}의 ${A(t1).no}`,결론줄:[`${A(t1).tr}이 돋보이는 ${nameHon}입니다`,`${A(t2).tr}도 함께 빛나는 창작자`,`지금의 탐구가 훗날 멋진 작품이 됩니다`]},
+    s17_진로:{전공:ks.map(k=>({전공명:A(k).mj[0],설명:A(k).mj[1]})),직업군:[...ks.map(k=>A(k).jb),'전시 기획자'],코멘트:`${A(t1).tr}과 ${A(t2).tr}은 AI 시대에 ${nameHon}만의 빛나는 예술 자산이 됩니다`},
+    s18_숨은재능:{재능:ks.map(k=>({제목:A(k).ta[0],설명:A(k).ta[1]})),공부:[...ks.map(k=>({제목:A(k).sd[0],설명:A(k).sd[1]})),{제목:'악기·운동',설명:'몸과 감각으로 익히는 또 다른 표현'}],코멘트:`${nameHon}${hIGa} 지금 넓게 배워 두는 모든 것이 미래 작품의 재료가 됩니다`}
    };
   };
   const AI = (r.aiSlides && typeof r.aiSlides==='object') ? r.aiSlides : localSlides();
@@ -2793,11 +2805,11 @@ function buildFoxArtDeck(PPTXLib, r){
     const t1 = ranked[0], t2 = ranked[1];
     const pair = [t1,t2].sort().join('');
     const T = {
-      ab:{name:'창의·탐험형 창작자', nick:'번뜩이는 아이디어 탐험가',
+      ab:{name:'ENFP 창의·탐험형 창작자', nick:'번뜩이는 아이디어 탐험가',
           brain:'떠오른 이미지를 곧바로 붙잡아 실험해 보는 창의·탐험형입니다. 머릿속 장면과 직감이 함께 움직입니다.',
           strong:'남들이 지나치는 것에서 아이디어를 발견하고, 새로운 방식을 겁 없이 시도하는 힘이 돋보입니다.',
           motive:'"이렇게 해보면 어떨까?"라는 호기심이 창작의 출발점입니다. 정해진 답보다 새로운 길에서 힘이 납니다.'},
-      ac:{name:'감성·표현형 창작자', nick:'마음을 그리는 화가',
+      ac:{name:'ESFP 감성·표현형 창작자', nick:'마음을 그리는 화가',
           brain:'느낀 것을 그대로 그림으로 옮기는 감성·표현형입니다. 감정이 곧 표현의 재료가 됩니다.',
           strong:'분위기와 색으로 마음을 전하는 힘이 강합니다. 보는 사람이 느끼게 만드는 그림을 그립니다.',
           motive:'마음에 남은 순간을 남기고 싶은 마음이 창작의 동기입니다. 공감받을 때 가장 크게 자랍니다.'},
@@ -2805,31 +2817,31 @@ function buildFoxArtDeck(PPTXLib, r){
           brain:'자유로운 상상을 구조로 정리해 완성하는 융합·설계형입니다. 상상과 계획이 함께 갑니다.',
           strong:'머릿속 아이디어를 실제로 만들어 내는 실행력이 돋보입니다. 상상이 설계로 이어집니다.',
           motive:'생각한 것이 눈앞에 완성될 때 큰 만족을 느낍니다. 만들어 내는 과정 자체가 동력입니다.'},
-      ae:{name:'상상·서사형 창작자', nick:'이야기를 그리는 작가',
+      ae:{name:'INFP 상상·서사형 창작자', nick:'이야기를 그리는 작가',
           brain:'그림 안에 이야기를 담는 상상·서사형입니다. 한 장면에도 앞뒤 이야기가 들어 있습니다.',
           strong:'장면에 사연을 부여하는 힘이 강합니다. 그림을 설명하게 하면 이야기가 술술 나옵니다.',
           motive:'하고 싶은 이야기가 있을 때 붓이 움직입니다. 전하고 싶은 마음이 창작의 시작입니다.'},
-      bc:{name:'직관·공감형 창작자', nick:'마음을 읽는 통찰가',
+      bc:{name:'ENFJ 직관·공감형 창작자', nick:'마음을 읽는 통찰가',
           brain:'상대의 마음을 빠르게 알아채는 직관·공감형입니다. 설명 전에 먼저 느낍니다.',
           strong:'인물의 표정과 분위기를 포착하는 감각이 뛰어납니다. 짧은 순간의 감정을 잡아냅니다.',
           motive:'누군가의 마음을 이해하고 표현하고 싶은 마음이 원동력입니다.'},
-      bd:{name:'직관·탐구형 창작자', nick:'핵심을 짚는 전략가',
+      bd:{name:'INTP 직관·탐구형 창작자', nick:'핵심을 짚는 전략가',
           brain:'핵심을 빠르게 파악하고 구조로 정리하는 직관·탐구형입니다. 군더더기를 덜어냅니다.',
           strong:'무엇이 중요한지 먼저 알아채고, 간결하게 정리해 표현하는 힘이 돋보입니다.',
           motive:'"왜 그런지" 알고 싶은 마음이 창작을 이끕니다. 원리를 알면 표현이 빨라집니다.'},
-      be:{name:'직관·서사형 창작자', nick:'장면을 포착하는 이야기꾼',
+      be:{name:'INFJ 직관·서사형 창작자', nick:'장면을 포착하는 이야기꾼',
           brain:'결정적 장면을 알아보는 직관·서사형입니다. 어떤 순간이 이야기가 되는지 압니다.',
           strong:'많은 장면 중 가장 말이 되는 하나를 골라내는 감각이 강합니다.',
           motive:'"이 장면은 남겨야 해"라는 직감이 창작의 방아쇠가 됩니다.'},
-      cd:{name:'감성·정교형 창작자', nick:'섬세하게 다듬는 장인',
+      cd:{name:'ISFJ 감성·정교형 창작자', nick:'섬세하게 다듬는 장인',
           brain:'느낀 것을 차분히 다듬어 완성하는 감성·정교형입니다. 감성과 꼼꼼함이 함께 있습니다.',
           strong:'끝까지 다듬어 완성도를 올리는 힘이 돋보입니다. 작은 차이를 알아봅니다.',
           motive:'마음에 들 때까지 다듬는 과정에서 보람을 느낍니다. 완성의 기쁨이 동력입니다.'},
-      ce:{name:'감성·서사형 창작자', nick:'마음을 잇는 이야기꾼',
+      ce:{name:'ESFJ 감성·서사형 창작자', nick:'마음을 잇는 이야기꾼',
           brain:'감정을 이야기로 풀어내는 감성·서사형입니다. 마음과 말이 함께 자랍니다.',
           strong:'사람과 사람 사이의 감정을 이야기로 엮는 힘이 강합니다.',
           motive:'마음을 나누고 싶은 마음이 창작의 시작입니다. 함께할 때 더 크게 자랍니다.'},
-      de:{name:'구조·서사형 창작자', nick:'세계를 설계하는 기획자',
+      de:{name:'ISTP 구조·서사형 창작자', nick:'세계를 설계하는 기획자',
           brain:'설정과 이야기를 함께 짜는 구조·서사형입니다. 큰 그림을 먼저 그립니다.',
           strong:'세계관과 규칙을 만들어 이야기를 쌓아가는 힘이 돋보입니다.',
           motive:'내가 만든 세계를 넓혀가는 재미가 창작의 동력입니다.'}
@@ -2912,7 +2924,7 @@ function buildFoxArtDeck(PPTXLib, r){
     dots(s);
     s.addShape(ROUND,{x:0.34,y:0.55,w:4.5,h:0.4,fill:{color:P.coral},line:{type:'none'},rectRadius:0.2});
     s.addText("미술 재능 · 뇌 분석 · 심리 상담 리포트",{x:0.34,y:0.55,w:4.5,h:0.4,align:"center",valign:"middle",fontSize:11,bold:true,color:P.white,fontFace:F,margin:0});
-    s.addText(`${name} 작가${ageStr?`(${ageStr})`:''}`,{x:0.34,y:1.12,w:9.3,h:0.92,fontSize:42,bold:true,color:P.white,fontFace:F,margin:0});
+    s.addText(`${name}${ageStr?`(${ageStr})`:''}`,{x:0.34,y:1.12,w:9.3,h:0.92,fontSize:42,bold:true,color:P.white,fontFace:F,margin:0});
     s.addText("미술적 재능 종합 분석 리포트",{x:0.36,y:2.04,w:9,h:0.4,fontSize:16,color:P.slate3,fontFace:F,margin:0});
     const partners=[["F","FoxArt","귀큰여우창작소","E8703A"],["K","KAILA","한국AI리터러시협회","8B6BE0"],["S","SDX재단","AI 교육 파트너","5A7B9A"]];
     partners.forEach((p,i)=>{
@@ -2956,7 +2968,7 @@ function buildFoxArtDeck(PPTXLib, r){
   {
     const s=pres.addSlide(); s.background={color:P.light};
     header(s,"","분석에 적용된 이론적 근거","Theoretical Foundations");
-    s.addText(`이 리포트는 세계적으로 검증된 5가지 이론을 종합 적용하여 ${name} 작가의 미술 재능·뇌 구조·인지·심리를 다각도로 분석했습니다.`,{x:0.34,y:0.62,w:9.3,h:0.3,fontSize:9,color:P.slate,fontFace:F,margin:0});
+    s.addText(`이 리포트는 세계적으로 검증된 5가지 이론을 종합 적용하여 ${nameHon}의 미술 재능·뇌 구조·인지·심리를 다각도로 분석했습니다.`,{x:0.34,y:0.62,w:9.3,h:0.3,fontSize:9,color:P.slate,fontFace:F,margin:0});
     const th=[
       ["01","미술 재능","로웬펠드 이론","Viktor Lowenfeld","아동·청소년 미술 발달 단계를 체계화. 창작 과정의 상상력·표현력·매체 선택으로 예술 재능 유형을 분석합니다.",P.coral],
       ["02","뇌 분석","로저 스페리 이론","Roger W. Sperry","노벨상 수상 좌·우뇌 분리 연구. 좌뇌(논리·언어)와 우뇌(이미지·직관·창의) 활성 비율로 창작 유형을 분석합니다.",P.violet],
@@ -2988,7 +3000,7 @@ function buildFoxArtDeck(PPTXLib, r){
 
     const QA = isAdultReport ? [
       ["01","숫자는 등수가 아닙니다",
-       `보고서의 % 는 다른 사람과 비교한 수치가 아닙니다. ${name} 작가가 가진 여러 재능 중 어느 부분이 더 두드러지는지를 나타낸 것입니다. 예를 들어 89%는 상위 11%라는 뜻이 아니라, 이 재능이 가장 앞서 있다는 뜻입니다.`,
+       `보고서의 % 는 다른 사람과 비교한 수치가 아닙니다. ${nameHon}${hIGa} 가진 여러 재능 중 어느 부분이 더 두드러지는지를 나타낸 것입니다. 예를 들어 89%는 상위 11%라는 뜻이 아니라, 이 재능이 가장 앞서 있다는 뜻입니다.`,
        P.coral],
       ["02","비교보다 자기 속도로 봅니다",
        "창작에는 정해진 나이표가 없습니다. 사람마다 성장 속도와 방향이 다르며, 지금 어느 지점에 있든 자기 속도로 계속 나아갈 수 있습니다.",
@@ -2998,7 +3010,7 @@ function buildFoxArtDeck(PPTXLib, r){
        P.sky]
     ] : [
       ["01","숫자는 등수가 아닙니다",
-       `보고서의 % 는 다른 아이와 비교한 수치가 아닙니다. ${name} 작가가 가진 여러 재능 중 어느 부분이 더 두드러지는지를 나타낸 것입니다. 예를 들어 89%는 '상위 11%'라는 뜻이 아니라, '이 재능이 가장 앞서 있다'는 뜻입니다.`,
+       `보고서의 % 는 다른 아이와 비교한 수치가 아닙니다. ${nameHon}${hIGa} 가진 여러 재능 중 어느 부분이 더 두드러지는지를 나타낸 것입니다. 예를 들어 89%는 '상위 11%'라는 뜻이 아니라, '이 재능이 가장 앞서 있다'는 뜻입니다.`,
        P.coral],
       ["02","또래 기준은 '발달 단계'로 봅니다",
        "대신 또래 기준은 분명히 있습니다. 미술교육 학계에서 쓰는 로웬펠드 발달 단계로, 이 나이 아이들이 일반적으로 지나는 시기를 표시했습니다. 아이의 작품이 그 시기의 특징을 어떻게 보여주는지 함께 설명드립니다.",
@@ -3017,9 +3029,55 @@ function buildFoxArtDeck(PPTXLib, r){
     });
 
     s.addShape(ROUND,{x:0.5,y:4.32,w:9,h:0.7,fill:{color:P.bg},line:{type:'none'},rectRadius:0.1});
-    s.addText(`그래서 이 리포트는 ${name} 작가를 줄 세우지 않고, ${name} 작가가 ${isAdultReport?"어떤 사람인지":"어떤 아이인지"} 이야기합니다.`,
+    s.addText(`그래서 이 리포트는 ${nameHon}${hEulReul} 줄 세우지 않고, ${nameHon}${hIGa} ${isAdultReport?"어떤 사람인지":"어떤 아이인지"} 이야기합니다.`,
       {x:0.5,y:4.32,w:9,h:0.7,align:"center",valign:"middle",fontSize:12.5,bold:true,color:P.white,fontFace:F,margin:0});
     note(s,"* 궁금한 점은 언제든 담당 선생님께 문의해 주세요.");
+  }
+
+  // ════ 슬라이드 1.5 — 10가지 미술 성향 유형 & 4축 시스템 (부록) ════
+  {
+    const s=pres.addSlide(); s.background={color:P.light};
+    s.addText("FoxArt AI 미술재능 검사",{x:0.5,y:0.35,w:9,h:0.5,fontSize:24,bold:true,color:"6D2E46",fontFace:F,margin:0});
+    s.addText("10가지 미술 성향 유형 & 4축 시스템",{x:0.5,y:0.92,w:9,h:0.3,fontSize:13,color:P.slate2,fontFace:F,margin:0});
+
+    // 10가지 유형 그리드 (5열 x 2행)
+    const types=[
+      ["ENFP","창의·탐험형","FF6B5B"],["ESFP","감성·표현형","E8A55D"],["ISTJ","융합·설계형","2C7A7B"],["INFP","상상·서사형","D8A084"],["ENFJ","직관·공감형","6D7B9B"],
+      ["INTP","직관·탐구형","5B7C99"],["INFJ","직관·서사형","C33545"],["ISFJ","감성·정교형","9B7D99"],["ESFJ","감성·서사형","E89B9B"],["ISTP","구조·서사형","8B5A3C"]
+    ];
+    const gx=0.5, gy=1.45, bw=1.78, bh=0.92, gap=0.09;
+    types.forEach((t,i)=>{
+      const col=i%5, row=Math.floor(i/5);
+      const x=gx+col*(bw+gap), y=gy+row*(bh+gap);
+      s.addShape(ROUND,{x,y,w:bw,h:bh,fill:{color:t[2]},line:{type:'none'},rectRadius:0.08});
+      s.addText(t[0],{x,y:y+0.14,w:bw,h:0.36,align:"center",valign:"middle",fontSize:15,bold:true,color:"FFFFFF",fontFace:F,margin:0});
+      s.addText(t[1],{x,y:y+0.5,w:bw,h:0.3,align:"center",valign:"middle",fontSize:10,color:"FFFFFF",fontFace:F,margin:0});
+    });
+
+    // 4축 시스템 표
+    s.addText("FoxArt AI 4축 시스템",{x:0.5,y:3.5,w:9,h:0.3,fontSize:14,bold:true,color:"6D2E46",fontFace:F,margin:0});
+    const axis=[
+      ["축","왼쪽","오른쪽"],
+      ["E/I","Expressive (표현형)","Introspective (내향형)"],
+      ["S/N","Sensory (감각형)","Narrative (서사형)"],
+      ["T/F","Thinking (이성형)","Feeling (감성형)"],
+      ["J/P","Judging (계획형)","Perceiving (유연형)"]
+    ];
+    const tx=0.5, ty=3.9, rowH=0.29, c1w=1.1, c2w=3.95, c3w=3.95;
+    axis.forEach((a,i)=>{
+      const y=ty+i*rowH;
+      if(i===0){
+        s.addShape(RECT,{x:tx,y,w:c1w+c2w+c3w,h:rowH,fill:{color:"6D2E46"},line:{type:'none'}});
+        s.addText(a[0],{x:tx+0.2,y,w:c1w,h:rowH,valign:"middle",fontSize:12,bold:true,color:"FFFFFF",fontFace:F,margin:0});
+        s.addText(a[1],{x:tx+c1w,y,w:c2w,h:rowH,valign:"middle",fontSize:12,bold:true,color:"FFFFFF",fontFace:F,margin:0});
+        s.addText(a[2],{x:tx+c1w+c2w,y,w:c3w,h:rowH,valign:"middle",fontSize:12,bold:true,color:"FFFFFF",fontFace:F,margin:0});
+      }else{
+        s.addShape(RECT,{x:tx,y,w:c1w+c2w+c3w,h:rowH,fill:{color:P.card},line:{color:P.line,width:1}});
+        s.addText(a[0],{x:tx+0.2,y,w:c1w,h:rowH,valign:"middle",fontSize:12,bold:true,color:"6D2E46",fontFace:F,margin:0});
+        s.addText(a[1],{x:tx+c1w,y,w:c2w,h:rowH,valign:"middle",fontSize:11,color:P.ink,fontFace:F,margin:0});
+        s.addText(a[2],{x:tx+c1w+c2w,y,w:c3w,h:rowH,valign:"middle",fontSize:11,color:P.slate2,fontFace:F,margin:0});
+      }
+    });
   }
 
   // ════ 슬라이드 2 — 목차 ════
@@ -3102,7 +3160,7 @@ function buildFoxArtDeck(PPTXLib, r){
 
     // ── 유형명 헤드라인 ──
     s.addText([
-      {text:`${name} 작가는 `,options:{color:P.slate}},
+      {text:`${name} `,options:{color:P.slate}},
       {text:aS('s4_핵심요약','유형명',30,FOX_TYPE.name),options:{bold:true,color:P.coral}},
       {text:` (${aS('s4_핵심요약','별명',26,FOX_TYPE.nick)})`,options:{color:P.slate}}
     ],{x:0.34,y:1.14,w:9.32,h:0.24,fontSize:11.5,fontFace:F,margin:0});
@@ -3138,9 +3196,9 @@ function buildFoxArtDeck(PPTXLib, r){
     const big = talents.slice(0,3).map(t=>[t.k]);
     big.forEach((b,i)=>{
       const x=6.05+i*1.22;
-      s.addShape(RECT,{x,y:1.92,w:1.14,h:0.48,fill:{color:i===0?P.coral:"FDE7EB"},line:{color:P.coral,width:i===0?0:1}});
+      s.addShape(RECT,{x,y:1.92,w:1.14,h:0.48,fill:{color:i===0?STRONG_PINK:"FDE7EB"},line:{color:STRONG_PINK,width:i===0?0:1}});
       s.addText(b[0],{x:x+0.06,y:1.95,w:1.02,h:0.18,fontSize:6.5,bold:true,color:i===0?P.white:P.ink,fontFace:F,margin:0});
-      s.addText(i===0?"최강점":"강점",{x:x+0.06,y:2.13,w:1.02,h:0.24,align:"center",valign:"middle",fontSize:i===0?8:9,bold:true,color:i===0?P.white:P.coral,fontFace:F,margin:0});
+      s.addText(i===0?"최강점":"강점",{x:x+0.06,y:2.13,w:1.02,h:0.24,align:"center",valign:"middle",fontSize:i===0?8:9,bold:true,color:i===0?P.white:STRONG_PINK,fontFace:F,margin:0});
     });
 
     // ── 12가지 재능 (압축 리스트, 4열×3행) ──
@@ -3148,7 +3206,7 @@ function buildFoxArtDeck(PPTXLib, r){
     talents.forEach((t,i)=>{
       const col=i%4, row=Math.floor(i/4);
       const x=0.34+col*2.37, y=2.50+row*0.42;
-      const c = i<3 ? P.coral : P.blue;
+      const c = i<3 ? STRONG_PINK : P.blue;
       s.addShape(RECT,{x,y,w:2.27,h:0.36,fill:{color:P.card},line:{color:P.line,width:1}});
       s.addText("",{x:x+0.06,y,w:0.55,h:0.36,align:"center",valign:"middle",fontSize:9.5,bold:true,color:c,fontFace:F,margin:0});
       s.addText(t.k,{x:x+0.62,y:y+0.03,w:1.4,h:0.18,fontSize:7.3,bold:true,color:P.ink,fontFace:F,margin:0});
@@ -3166,9 +3224,9 @@ function buildFoxArtDeck(PPTXLib, r){
       const parts=[
         ["지금 이 시기", P.coral,
           aS('s4_핵심요약','지금시기',110, ci>=0
-            ? `${name} 작가는 지금 ${stName} — ${stDesc}를 지나고 있습니다.`
-            : `${name} 작가만의 표현 방식이 자리를 잡아가는 시기입니다.`)],
-        [`${name} 작가의 강점`, P.violet,
+            ? `${nameHon}${hEunNeun} 지금 ${stName} — ${stDesc}를 지나고 있습니다.`
+            : `${nameHon}만의 표현 방식이 자리를 잡아가는 시기입니다.`)],
+        [`${nameHon}의 강점`, P.violet,
           aS('s4_핵심요약','강점',120, `상상력과 공간을 다루는 감각이 특히 앞서 있습니다.`)],
         ["요즘 겪는 것", P.sky,
           aS('s4_핵심요약','요즘겪는것',120, `${isAdultReport?"안목이 손끝보다 앞서는 때라, 스스로에게 실망할 수 있습니다.":"보는 눈이 손보다 빨리 자라는 때라, 스스로에게 실망할 수 있습니다."}`)],
@@ -3265,7 +3323,7 @@ function buildFoxArtDeck(PPTXLib, r){
       s.addText("• "+t,{x:5.2+col*2.2,y:2.96+row*0.32,w:2.1,h:0.28,valign:"middle",fontSize:7.6,color:P.ink,fontFace:F,margin:0});
     });
 
-    s.addText(aS('s7_좌우뇌','코멘트',110,`${name} 작가는 감각적·직관적 사고가 강하며, 이미지·감성·직관 중심으로 표현합니다.`),{x:5.0,y:4.58,w:4.66,h:0.55,fontSize:7.6,color:P.slate,fontFace:F,wrap:true,valign:"top",margin:0});
+    s.addText(aS('s7_좌우뇌','코멘트',110,`${nameHon}${hEunNeun} 감각적·직관적 사고가 강하며, 이미지·감성·직관 중심으로 표현합니다.`),{x:5.0,y:4.58,w:4.66,h:0.55,fontSize:7.6,color:P.slate,fontFace:F,wrap:true,valign:"top",margin:0});
   }
 
   // ════ 슬라이드 8 — 신경전달물질 ════
@@ -3330,7 +3388,7 @@ function buildFoxArtDeck(PPTXLib, r){
     ["나는 사랑받을 가치가 있다","나는 충분히 잘하고 있다","나는 나답게 살아도 된다","나의 탐구심은 강점이다","혼란은 성장의 신호이다","내 길을 찾아가고 있다"].forEach((t,i)=>{
       s.addText("*  "+t,{x:0.52,y:1.5+i*0.56,w:2.66,h:0.5,valign:"middle",fontSize:9.5,color:P.white,fontFace:F,margin:0});
     });
-        note(s,aS('s11_욕구신념','코멘트',76, pz('핵심트라우마',76,`이 성향이 살아날 때 ${name} 작가의 창의력과 열정은 가장 크게 발휘됩니다.`)),true);
+        note(s,aS('s11_욕구신념','코멘트',76, pz('핵심트라우마',76,`이 성향이 살아날 때 ${nameHon}의 창의력과 열정은 가장 크게 발휘됩니다.`)),true);
   }
 
   // ════ 마음 관찰 (마음 들여다보기) — 심리 섹션 뒤 ════
@@ -3339,7 +3397,7 @@ function buildFoxArtDeck(PPTXLib, r){
     dots(s);
     header(s,"","마음 들여다보기","Inner Reflection · 융·애착·정서 관점",true);
     const mind=(Array.isArray(r.mind)&&r.mind.length)?r.mind:[];
-    s.addText(`정답이 없는 마음 탐색이에요. 아래는 ${name} 작가가 고른 답을 따라가 본 관찰이며, 진단이 아니에요.`,
+    s.addText(`정답이 없는 마음 탐색이에요. 아래는 ${nameHon}${hIGa} 고른 답을 따라가 본 관찰이며, 진단이 아니에요.`,
       {x:0.5,y:0.56,w:9,h:0.3,align:"center",fontSize:9.5,color:P.slate3,fontFace:F,margin:0});
     const extra=[ r.interest&&("관심 소재: "+r.interest), r.color&&("좋아하는 색: "+r.color) ].filter(Boolean).join("      ·      ");
     if(extra) s.addText(extra,{x:0.5,y:0.86,w:9,h:0.26,align:"center",fontSize:9,bold:true,color:P.coral,fontFace:F,margin:0});
@@ -3441,15 +3499,15 @@ function buildFoxArtDeck(PPTXLib, r){
       s.addShape(RECT,{x:6.98,y:y+0.05,w:2.6,h:0.3,fill:{color:st[3],transparency:88},line:{color:st[3],width:1}});
       s.addText("실천 · "+st[2],{x:7.04,y:y+0.05,w:2.5,h:0.3,valign:"middle",fontSize:6.8,bold:true,color:st[3],fontFace:F,wrap:true,margin:0});
     });
-    note(s,aS('s13_로드맵','비전',74, pz('성장로드맵',74,`${name} 작가의 비전 · 자신을 탐구하고 다양한 매체로 실험하며, 자신만의 예술 언어를 찾을 때 더욱 빛나는 창작자가 됩니다.`)));
+    note(s,aS('s13_로드맵','비전',74, pz('성장로드맵',74,`${nameHon}의 비전 · 자신을 탐구하고 다양한 매체로 실험하며, 자신만의 예술 언어를 찾을 때 더욱 빛나는 창작자가 됩니다.`)));
   }
 
   // ════ 슬라이드 15 — 응원 메시지 ════
   {
     const s=pres.addSlide(); s.background={color:P.bg};
     dots(s);
-    s.addText(`09  ${name} 작가에게 보내는 응원`,{x:0.34,y:0.34,w:9,h:0.32,fontSize:12,bold:true,color:P.coral,fontFace:F,margin:0});
-    s.addText(`${name} 작가에게`,{x:0.5,y:0.86,w:9,h:0.5,align:"center",fontSize:20,color:P.slate3,fontFace:F,margin:0});
+    s.addText(`09  ${nameHon}에게 보내는 응원`,{x:0.34,y:0.34,w:9,h:0.32,fontSize:12,bold:true,color:P.coral,fontFace:F,margin:0});
+    s.addText(`${nameHon}에게`,{x:0.5,y:0.86,w:9,h:0.5,align:"center",fontSize:20,color:P.slate3,fontFace:F,margin:0});
     s.addText(FOX_CHEER.head,{x:0.5,y:1.3,w:9,h:0.55,align:"center",fontSize:24,bold:true,color:P.white,fontFace:F,margin:0});
     let msgs=FOX_CHEER.msgs;
     {const _a=aL('s15_응원','메시지',5); if(_a) msgs=_a.map((o,i)=>[cl(o.주문장,28)||msgs[i][0],cl(o.보조문장,24)||msgs[i][1]]);}
@@ -3493,7 +3551,7 @@ function buildFoxArtDeck(PPTXLib, r){
       s.addText(j[0],{x:x+0.12,y:y+0.12,w:0.78,h:0.3,align:"center",valign:"middle",fontSize:8,bold:true,color:P.white,fontFace:F,margin:0});
       s.addText(j[1],{x:x+0.12,y:y+0.46,w:2,h:0.26,fontSize:9.5,bold:true,color:P.ink,fontFace:F,margin:0});
     });
-    s.addText(aS('s17_진로','코멘트',110, pz('미래직업',110,`${name} 작가의 다매체 융합 능력·공간 감각·호기심은 AI 시대에 더욱 희귀하고 강력한 예술적 자산이 됩니다.`)),{x:5.1,y:3.9,w:4.56,h:0.9,fontSize:8.5,color:P.slate,fontFace:F,wrap:true,valign:"top",margin:0});
+    s.addText(aS('s17_진로','코멘트',110, pz('미래직업',110,`${nameHon}의 다매체 융합 능력·공간 감각·호기심은 AI 시대에 더욱 희귀하고 강력한 예술적 자산이 됩니다.`)),{x:5.1,y:3.9,w:4.56,h:0.9,fontSize:8.5,color:P.slate,fontFace:F,wrap:true,valign:"top",margin:0});
   }
 
   // ════ 슬라이드 18 — 미술 외 숨겨진 재능 & 공부 ════
@@ -3563,7 +3621,7 @@ function buildFoxArtDeck(PPTXLib, r){
     const s=pres.addSlide(); s.background={color:P.bg};
     dots(s);
     s.addText("감사합니다  ·  Thank You",{x:0.5,y:0.95,w:9,h:0.8,align:"center",fontSize:38,bold:true,color:P.white,fontFace:F,margin:0});
-    s.addText(`${name} 작가의 미술 재능 · 뇌 분석 · 심리 상담 리포트`,{x:0.5,y:1.85,w:9,h:0.35,align:"center",fontSize:12,color:P.slate3,fontFace:F,margin:0});
+    s.addText(`${nameHon}의 미술 재능 · 뇌 분석 · 심리 상담 리포트`,{x:0.5,y:1.85,w:9,h:0.35,align:"center",fontSize:12,color:P.slate3,fontFace:F,margin:0});
     const partners=[["F","FoxArt","귀큰여우창작소","E8703A"],["K","KAILA","한국AI리터러시협회","8B6BE0"],["S","SDX재단","AI 교육 파트너","5A7B9A"]];
     partners.forEach((p,i)=>{
       const x=1.45+i*2.45;
