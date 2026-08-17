@@ -2518,6 +2518,7 @@ async function submitQuiz(){
         system:`당신은 FoxArt AI 미술재능 진단 전문가입니다. ${isAdult?'성인':'초등학생'}의 미술재능·뇌구조·심리성향을 따뜻하고 전문적으로 분석합니다.
 로웬펠드·가드너·토런스 이론, 좌우뇌 이론, 프로이트·융·아들러 이론을 기반으로 합니다.
 작품 사진이 제공되면 작품의 색채·구성·주제·표현 방식을 적극 반영하세요.
+[작품 해석 원칙] 작품 분석은 반드시 이 아이의 유형(위 유형명)을 뒷받침하는 '증거'로 쓰세요. 작품이 유형과 일치하도록 해석합니다. 완성도·기술·잘 그림 여부를 절대 평가하지 마세요. 낙서·미완성·단순한 그림이어도 부정적 표현을 쓰지 말고, 표현하려는 마음·상상·색채 감각·자유로움·도전을 따뜻하게 읽어 주세요. 발달 단계에 맞는 자연스러운 표현으로 존중합니다.
 반드시 아래 형식으로만 응답하세요 (마크다운 없이 순수 텍스트):
 [종합인상]
 [미술재능]
@@ -2541,6 +2542,7 @@ async function submitQuiz(){
 - 배열 개수를 정확히 지키고, JSON 외 다른 말은 금지합니다.
 스키마:
 {"s3_발달단계":{"코멘트":"한두 문장"},
+"s_작품해석":{"유형줄":"'○○은 ○○형 창작자' 형식. 이름과 위 s4_핵심요약의 유형명을 그대로 사용","색채":"업로드된 작품의 색·표현 방식을 근거로, 이 아이의 유형 특징을 뒷받침하는 2~3문장. 완성도·기술 평가 절대 금지, 부정 표현 금지","마음":"작품에서 읽히는 마음·정서를 2~3문장. 낙서·미완성이어도 따뜻하게, 감정 표현의 건강함으로","창의":"작품의 상상력·발상을 2~3문장. 반드시 유형과 일치하게, '검사 결과와 일치'를 언급","탐험":"재료·소재·도전 등 표현의 강점을 2~3문장. 유형의 재능을 뒷받침"},
 "s4_핵심요약":{"유형명":"'○○·○○형 창작자' 형식. 이 아이의 가장 두드러진 두 영역을 조합해 지을 것","별명":"괄호 안에 들어갈 친근한 별명. 예: 번뜩이는 아이디어 탐험가","뇌유형":"1~2문장","핵심강점":"1~2문장","창작동기":"1~2문장","지금시기":"1~2문장. 이 아이가 지금 어떤 발달 시기를 지나고 있는지, 그 시기가 어떤 때인지 쉬운 말로.","강점":"2~3문장. 이 아이의 두드러진 재능을 쓰되, 업로드된 작품의 실제 특징(색·구도·소재·표현 방식)을 반드시 한 번 이상 구체적으로 근거로 들 것.","요즘겪는것":"2~3문장. 그 강점과 시기 때문에 요즘 겪을 수 있는 어려움을 쓰고, 그것이 왜 문제가 아니라 성장의 증거인지 따뜻하게 설명.","부모님께":"1~2문장. 부모가 오늘 당장 할 수 있는 구체적인 행동 한 가지. 추상적 조언 금지."},
 "s6_인지":{"개발영역코멘트":"한 문장"},
 "s7_좌우뇌":{"코멘트":"한 문장"},
@@ -3087,13 +3089,14 @@ function buildFoxArtDeck(PPTXLib, r){
     s.addText("Table of Contents",{x:0.54,y:1.02,w:5,h:0.3,fontSize:12,color:P.slate2,fontFace:F,margin:0});
     const toc=[
       ["01","미술 재능 프로파일 · 핵심 요약","12가지 창작 재능 + 유형 요약",P.coral],
-      ["02","뇌 영역별 활성도","핵심 뇌 영역 활성 분석",P.violet],
-      ["03","인지 성향 · 논리 vs 감각","11가지 인지 지표 + 사고 유형",P.sky],
-      ["04","신경전달물질","도파민·옥시토신·세로토닌",P.green],
-      ["05","성향 분석 · 핵심 신념","성향 카드 + 핵심 신념",P.amber],
-      ["06","회복과 강점","치유하는 힘 & 핵심 강점",P.purple],
-      ["07","건강한 성장 로드맵 · 성장 방향","단계별 로드맵 + 실천 스텝",P.orange],
-      ["08","응원 메시지","용기와 희망의 메시지",P.coral],
+      ["02","작품 해석 · 창작 세계","업로드 작품의 색채·마음·창의 분석",P.rose],
+      ["03","뇌 영역별 활성도","핵심 뇌 영역 활성 분석",P.violet],
+      ["04","인지 성향 · 논리 vs 감각","11가지 인지 지표 + 사고 유형",P.sky],
+      ["05","신경전달물질","도파민·옥시토신·세로토닌",P.green],
+      ["06","성향 분석 · 핵심 신념","성향 카드 + 핵심 신념",P.amber],
+      ["07","회복과 강점","치유하는 힘 & 핵심 강점",P.purple],
+      ["08","건강한 성장 로드맵 · 성장 방향","단계별 로드맵 + 실천 스텝",P.orange],
+      ["09","응원 메시지","용기와 희망의 메시지",P.coral],
     ];
     toc.forEach((t,i)=>{
       const col=i<5?0:1, row=i%5;
@@ -3245,10 +3248,56 @@ function buildFoxArtDeck(PPTXLib, r){
     note(s, isAdultReport ? "[공통] 상단 띠는 성인 창작 여정의 단계 예시입니다. 등수가 아니며 사람마다 속도가 다릅니다.  ·  수치는 AI 미술재능 검사 + 작품 분석 기반 추정치" : "[공통] 상단 띠는 로웬펠드(V. Lowenfeld) 미술 발달 단계 기준선입니다. 등수가 아니며 아이마다 속도가 다릅니다.  ·  수치는 AI 미술재능 검사 + 작품 분석 기반 추정치");
   }
 
+  // ════ 슬라이드 4 — 작품 해석 · 창작 세계 ════
+  {
+    const s=pres.addSlide(); s.background={color:P.light};
+    header(s,"02","작품 해석 · 창작 세계","Artwork Analysis");
+
+    const _bannerBg = isKidsReport?"FCEEF4":(isAdultReport?"F7F5E9":"F1F5F9");
+    s.addShape(RECT,{x:0.34,y:0.66,w:9.32,h:0.42,fill:{color:_bannerBg},line:{type:'none'}});
+    s.addShape(RECT,{x:0.34,y:0.66,w:0.06,h:0.42,fill:{color:P.coral},line:{type:'none'}});
+    s.addText([
+      {text:aS('s_작품해석','유형줄',60,`${name}의 작품 세계`),options:{bold:true,color:P.bg,fontSize:11}},
+      {text:"  — 아래 작품들이 그 증거입니다",options:{color:P.slate2,fontSize:9.5}}
+    ],{x:0.5,y:0.66,w:9,h:0.42,valign:"middle",fontFace:F,margin:0});
+
+    const _artShow = artworks.slice(0,5);
+    const _agx=0.34, _agy=1.2, _agw=1.82, _agh=1.6, _aggap=0.06;
+    const _artPlaceholder=["4A5A7A","C97B5A","7A9B6D","9B7BA0","C9A86A"];
+    for(let i=0;i<5;i++){
+      const x=_agx+i*(_agw+_aggap);
+      if(_artShow[i]){
+        s.addImage({data:_artShow[i],x,y:_agy,w:_agw,h:_agh,sizing:{type:'cover',w:_agw,h:_agh}});
+      } else {
+        s.addShape(ROUND,{x,y:_agy,w:_agw,h:_agh,fill:{color:P.light2||"F4F9FE"},line:{color:P.line,width:1},rectRadius:0.05});
+      }
+    }
+
+    const _cardColors = isKidsReport ? ["D9548F","1E86C8","CB3E7B","2570BC"]
+      : (isAdultReport ? ["3E8E5A","2E7D46","5C8F5C","7A9B3C"]
+      : ["3B82F6","1E293B","475569","0EA5E9"]);
+    const _artCards=[
+      ["🎨 색채와 표현", aS('s_작품해석','색채',160,'색을 자유롭게 표현하는 힘이 보입니다.')],
+      ["💗 마음 · 정서", aS('s_작품해석','마음',160,'감정을 솔직하게 담아내는 마음이 느껴집니다.')],
+      ["🧠 창의력 · 상상력", aS('s_작품해석','창의',160,'상상하는 힘이 자라고 있습니다.')],
+      ["✨ 탐험 · 도전 강점", aS('s_작품해석','탐험',160,'새로운 시도를 즐기는 용기가 있습니다.')]
+    ];
+    const _cw=4.62, _ch=1.02, _cgap=0.08, _cx=0.34, _cy=2.94;
+    for(let i=0;i<4;i++){
+      const col=i%2, row=Math.floor(i/2);
+      const x=_cx+col*(_cw+_cgap), y=_cy+row*(_ch+_cgap);
+      s.addShape(ROUND,{x,y,w:_cw,h:_ch,fill:{color:P.card},line:{color:P.line,width:1},rectRadius:0.04});
+      s.addShape(RECT,{x,y,w:_cw,h:0.3,fill:{color:_cardColors[i]},line:{type:'none'}});
+      s.addText(_artCards[i][0],{x:x+0.12,y:y,w:_cw-0.2,h:0.3,valign:"middle",fontSize:11,bold:true,color:"FFFFFF",fontFace:F,margin:0});
+      s.addText(_artCards[i][1],{x:x+0.12,y:y+0.34,w:_cw-0.24,h:_ch-0.4,valign:"top",fontSize:9,color:P.ink,fontFace:F,margin:0});
+    }
+    note(s,"본 분석은 관찰·작품 기반의 서사 해석이며, 의학적 진단이 아닙니다.");
+  }
+
   // ════ 슬라이드 5 — 뇌 영역별 활성도 ════
   {
     const s=pres.addSlide(); s.background={color:P.bg};
-    header(s,"02","뇌 영역별 활성도","Brain Activity Map",true);
+    header(s,"03","뇌 영역별 활성도","Brain Activity Map",true);
     s.addText("상대적 추정치",{x:8.2,y:0.62,w:1.5,h:0.26,align:"right",fontSize:8.5,color:P.slate3,fontFace:F,margin:0});
     const brains=[
       {k:"전두엽",d:"계획·판단·실행 / 아이디어 구조화, 목표 설정",v:Math.min(5,(sc.d/100*5+0.5)),c:P.coral},
@@ -3275,7 +3324,7 @@ function buildFoxArtDeck(PPTXLib, r){
   // ════ 슬라이드 6 — 인지 성향 분석 + 논리 vs 감각적 사고 (통합) ════
   {
     const s=pres.addSlide(); s.background={color:P.light};
-    header(s,"03","인지 성향 분석 · 논리 vs 감각적 사고","Cognitive Profile & Thinking Style");
+    header(s,"04","인지 성향 분석 · 논리 vs 감각적 사고","Cognitive Profile & Thinking Style");
     const cog=[
       ["상상력 / 창의성",(sc.a+11)/10,P.coral],["공간 활용력",(sc.b+8)/10,P.violet],
       ["직관력",(sc.a+4)/10,P.sky],["감수성 / 정서 민감도",(sc.c+2)/10,P.rose],
@@ -3329,7 +3378,7 @@ function buildFoxArtDeck(PPTXLib, r){
   // ════ 슬라이드 8 — 신경전달물질 ════
   {
     const s=pres.addSlide(); s.background={color:P.light};
-    header(s,"04","신경전달물질 균형","Neurotransmitter Balance");
+    header(s,"05","신경전달물질 균형","Neurotransmitter Balance");
     s.addText("창작과 감성 기반 신경전달물질 활성화 패턴",{x:0.34,y:0.62,w:9,h:0.3,fontSize:10,color:P.slate2,fontFace:F,margin:0});
     const nt=[
       ["도파민 (Dopamine)","동기·보상",clamp(sc.d,55,90),"창작 활동과 새로운 아이디어 탐색·성취감에서 강하게 활성화됩니다. 실험적 매체 탐구 시 풍부하게 분비됩니다.",P.coral,"높음"],
@@ -3356,7 +3405,7 @@ function buildFoxArtDeck(PPTXLib, r){
   // ════ 슬라이드 9 — 무의식 구조(빙산) + 무의식적 욕구 & 핵심 신념 (통합) ════
   {
     const s=pres.addSlide(); s.background={color:P.bg};
-    header(s,"05","성향 분석 · 핵심 신념","Personality & Core Beliefs",true);
+    header(s,"06","성향 분석 · 핵심 신념","Personality & Core Beliefs",true);
 
     // ── 우: 5개 테마 카드 (압축) ──
     let themes=[["사랑","사랑과 유대","사랑받고 싶은 마음, 연결되고 싶은 욕구",P.rose],["탐구","호기심과 탐구","세상을 탐구하고 끊임없이 실험하는 욕구",P.sky],["자유","자유와 자율","일상의 아름다움 속 자유로운 표현 욕구",P.amber],["공감","공감과 연결","따뜻한 관계와 함께하는 세상 만들기",P.green],["성장","성장과 완성","한계를 넘어 더 나은 나로 발전하는 여정",P.violet]];
@@ -3427,7 +3476,7 @@ function buildFoxArtDeck(PPTXLib, r){
   // ════ 슬라이드 12 — 회복과 강점 & 개발 포인트 ════
   {
     const s=pres.addSlide(); s.background={color:P.light};
-    header(s,"06",name+" 작가의 회복과 강점 & 개발 포인트","Healing & Growth Areas");
+    header(s,"07",name+" 작가의 회복과 강점 & 개발 포인트","Healing & Growth Areas");
     let str=[
       ["창작과 표현",pz('회복강점',60,"상처와 혼란을 예술로 승화시키는 힘 — 다양한 매체 탐구가 가장 강력한 치유의 통로입니다"),P.coral],
       ["호기심과 탐구","일상에서 아름다움을 발견하는 반짝이는 눈 — 이 능력이 평생 창작의 원동력이 됩니다",P.violet],
@@ -3456,7 +3505,7 @@ function buildFoxArtDeck(PPTXLib, r){
   // ════ 슬라이드 13 — 성장 로드맵 + 성장 방향 (통합) ════
   {
     const s=pres.addSlide(); s.background={color:P.light};
-    header(s,"07","건강한 성장 로드맵 · 성장 방향","Growth Roadmap & Path Forward");
+    header(s,"08","건강한 성장 로드맵 · 성장 방향","Growth Roadmap & Path Forward");
     s.addText("자유 · 인정 · 사랑을 향해",{x:0.34,y:0.58,w:9,h:0.2,fontSize:9,bold:true,color:P.coral,fontFace:F,margin:0});
 
     // ── 상단: 성장 로드맵 4단계 (압축) ──
