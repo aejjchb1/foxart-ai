@@ -885,13 +885,13 @@ body{font-family:'Gowun Dodum',sans-serif;background:var(--light);color:var(--da
     <div id="v-upload" class="screen">
       <div class="area-banner" style="background:var(--purple)">
         <h3>🎨 작품 사진 업로드</h3>
-        <p>최근 그린 작품 사진을 올려주세요 (최대 3장)</p>
+        <p>최근 그린 작품 사진을 올려주세요 (최대 2장)</p>
       </div>
       <div class="card">
-        <div class="card-title">📷 내 작품 (<span id="upload-count">0</span> / 3)</div>
+        <div class="card-title">📷 내 작품 (<span id="upload-count">0</span> / 2)</div>
         <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:14px">
           작품 사진이 있으면 AI가 훨씬 정확하게 분석해요.<br>
-          3장 정도 권장하지만, 없어도 진단은 진행할 수 있어요.
+          2장 정도 권장하지만, 없어도 진단은 진행할 수 있어요.
         </p>
         <div id="upload-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px"></div>
         <label id="upload-label" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;border:2px dashed var(--cream2);border-radius:12px;cursor:pointer;background:var(--light)">
@@ -2368,7 +2368,7 @@ function playDing(){
 function handleUpload(e){
   const files=Array.from(e.target.files);
   for(const file of files){
-    if(artworks.length>=3){ alert('최대 3장까지 올릴 수 있어요'); break; }
+    if(artworks.length>=2){ alert('최대 2장까지 올릴 수 있어요'); break; }
     if(!file.type.startsWith('image/')) continue;
     const reader=new FileReader();
     reader.onload=ev=>{
@@ -2418,7 +2418,7 @@ function renderUploads(){
   });
   // 업로드 라벨 표시 제어 (10장 차면 숨김)
   const label=document.getElementById('upload-label');
-  if(label) label.style.display=artworks.length>=3?'none':'flex';
+  if(label) label.style.display=artworks.length>=2?'none':'flex';
 }
 function finishUpload(){
   var _ac=document.getElementById('artwork-consent'); if(_ac && !_ac.checked){ alert('업로드한 작품이 검사 대상 본인이 직접 그린 것인지 확인(체크)해 주세요.'); return; }
@@ -2495,7 +2495,7 @@ async function submitQuiz(){
 
   // 작품 이미지를 멀티모달 content로 구성 (백그라운드 함수라 시간 여유 있음, 최대 3장)
   const userContent=[{type:'text',text:prompt}];
-  const _artForAI = artworks.slice(0,3);
+  const _artForAI = artworks.slice(0,2);
   if(_artForAI.length>0){
     userContent.push({type:'text',text:`\n\n아래는 ${studentName} ${isAdult?'참여자':'학생'}의 실제 작품 ${_artForAI.length}점입니다. 작품의 색채·구성·주제·표현 방식을 분석에 반영해 주세요.`});
     _artForAI.forEach(src=>{
