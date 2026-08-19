@@ -2495,7 +2495,7 @@ async function submitQuiz(){
 
   // 작품 이미지를 멀티모달 content로 구성 (백그라운드 함수라 시간 여유 있음, 최대 3장)
   const userContent=[{type:'text',text:prompt}];
-  const _artForAI = artworks.slice(0,2);
+  const _artForAI = [];
   if(_artForAI.length>0){
     userContent.push({type:'text',text:`\n\n아래는 ${studentName} ${isAdult?'참여자':'학생'}의 실제 작품 ${_artForAI.length}점입니다. 작품의 색채·구성·주제·표현 방식을 분석에 반영해 주세요.`});
     _artForAI.forEach(src=>{
