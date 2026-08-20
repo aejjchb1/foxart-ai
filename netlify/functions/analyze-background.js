@@ -77,14 +77,27 @@ exports.handler = async function (event) {
       return { statusCode: 202, body: '' };
     }
 
-    // 응답 안에 실제 분석 텍스트(content[0].text)가 있는지 확인
+    // 응답 안에 실제 분석 텍스트가 있는지 확인 (구조가 조금 달라도 최대한 찾음)
     let hasContent = false;
+    let extractedLen = 0;
     try {
       const parsed = JSON.parse(text);
-      hasContent = !!(parsed && parsed.content && parsed.content[0] && parsed.content[0].text);
-      console.log('[BG] content 존재=' + hasContent + (hasContent ? ' 텍스트길이=' + parsed.content[0].text.length : ' 응답앞부분=' + text.slice(0, 300)));
+      if (parsed && Array.isArray(parsed.content)) {
+        // content 배열에서 text 타입 블록들을 모두 이어붙임
+        const joined = parsed.content
+          .map(function (b) { return (b && typeof b.text === 'string') ? b.text : ''; })
+          .join('');
+        extractedLen = joined.length;
+        hasContent = joined.trim().length > 0;
+      }
+      console.log('[BG] content배열=' + (parsed && Array.isArray(parsed.content)) + ' 추출텍스트길이=' + extractedLen + ' hasContent=' + hasContent);
+      if (!hasContent) {
+        // 원인 파악용: 응답 구조를 자세히 남김 (stop_reason, content 타입 등)
+        console.log('[BG] 진단: stop_reason=' + (parsed && parsed.stop_reason) + ' content타입들=' + (parsed && Array.isArray(parsed.content) ? parsed.content.map(function (b) { return b && b.type; }).join(',') : 'N/A'));
+        console.log('[BG] 응답 뒷부분: ' + text.slice(-400));
+      }
     } catch (pe) {
-      console.log('[BG] 응답 JSON 파싱 실패: ' + text.slice(0, 300));
+      console.log('[BG] 응답 JSON 파싱 실패: ' + text.slice(0, 400));
     }
 
     if (!hasContent) {
