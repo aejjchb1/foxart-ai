@@ -49,13 +49,14 @@ exports.handler = async function (event) {
 
   // Anthropic 요청 본문 구성
   const body = {
-    model: payload.model || 'claude-sonnet-4-6',
+    model: payload.model || 'claude-sonnet-5',
     max_tokens: payload.max_tokens || 4000,
     messages: payload.messages || []
   };
   if (payload.system) body.system = payload.system;
 
   try {
+    console.log('[BG] 분석 시작 jobId=' + jobId + ' model=' + body.model + ' messages=' + (body.messages ? body.messages.length : 0));
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -67,17 +68,38 @@ exports.handler = async function (event) {
     });
 
     const text = await resp.text();
+    console.log('[BG] API 응답 status=' + resp.status + ' 길이=' + (text ? text.length : 0));
 
     if (!resp.ok) {
+      console.log('[BG] API 오류 본문 앞부분: ' + (text ? text.slice(0, 300) : '(빈 응답)'));
       await store.setJSON(jobId, { status: 'error', error: 'Anthropic API 오류 (' + resp.status + ')', detail: text });
+      console.log('[BG] 저장 완료(error) jobId=' + jobId);
+      return { statusCode: 202, body: '' };
+    }
+
+    // 응답 안에 실제 분석 텍스트(content[0].text)가 있는지 확인
+    let hasContent = false;
+    try {
+      const parsed = JSON.parse(text);
+      hasContent = !!(parsed && parsed.content && parsed.content[0] && parsed.content[0].text);
+      console.log('[BG] content 존재=' + hasContent + (hasContent ? ' 텍스트길이=' + parsed.content[0].text.length : ' 응답앞부분=' + text.slice(0, 300)));
+    } catch (pe) {
+      console.log('[BG] 응답 JSON 파싱 실패: ' + text.slice(0, 300));
+    }
+
+    if (!hasContent) {
+      await store.setJSON(jobId, { status: 'error', error: 'AI 응답에 분석 내용이 없습니다', detail: text.slice(0, 500) });
+      console.log('[BG] 저장 완료(내용없음) jobId=' + jobId);
       return { statusCode: 202, body: '' };
     }
 
     // 성공: 결과를 그대로 저장
     await store.setJSON(jobId, { status: 'done', result: text });
+    console.log('[BG] 저장 완료(done) jobId=' + jobId);
     return { statusCode: 202, body: '' };
 
   } catch (err) {
+    console.log('[BG] 예외 발생: ' + String(err && err.message || err));
     await store.setJSON(jobId, { status: 'error', error: '서버에서 Anthropic 연결 실패', detail: String(err && err.message || err) });
     return { statusCode: 202, body: '' };
   }

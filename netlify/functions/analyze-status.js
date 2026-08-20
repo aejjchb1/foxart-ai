@@ -45,13 +45,16 @@ exports.handler = async function (event) {
 
     if (!data) {
       // 아직 백그라운드 함수가 결과를 저장하기 전 → 진행 중
+      console.log('[STATUS] jobId=' + jobId + ' → 아직 없음(pending)');
       return { statusCode: 200, headers: CORS, body: JSON.stringify({ status: 'pending' }) };
     }
 
     // 결과가 있으면 그대로 전달 (done 또는 error)
+    console.log('[STATUS] jobId=' + jobId + ' → 찾음 status=' + (data.status || '?'));
     return { statusCode: 200, headers: CORS, body: JSON.stringify(data) };
 
   } catch (err) {
+    console.log('[STATUS] jobId=' + jobId + ' → 조회 예외: ' + String(err && err.message || err));
     return { statusCode: 200, headers: CORS, body: JSON.stringify({ status: 'pending' }) };
   }
 };
