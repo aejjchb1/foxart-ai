@@ -2514,7 +2514,7 @@ async function submitQuiz(){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         jobId:_jobId,
-        model:'claude-sonnet-5', max_tokens:4000,
+        model:'claude-sonnet-5', max_tokens:8000,
         system:`당신은 FoxArt AI 미술재능 진단 전문가입니다. ${isAdult?'성인':'초등학생'}의 미술재능·뇌구조·심리성향을 따뜻하고 전문적으로 분석합니다.
 로웬펠드·가드너·토런스 이론, 좌우뇌 이론, 프로이트·융·아들러 이론을 기반으로 합니다.
 작품 사진이 제공되면 작품의 색채·구성·주제·표현 방식을 적극 반영하세요.
