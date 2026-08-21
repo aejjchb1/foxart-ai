@@ -885,10 +885,10 @@ body{font-family:'Gowun Dodum',sans-serif;background:var(--light);color:var(--da
     <div id="v-upload" class="screen">
       <div class="area-banner" style="background:var(--purple)">
         <h3>🎨 작품 사진 업로드</h3>
-        <p>최근 그린 작품 사진을 올려주세요 (최대 5장)</p>
+        <p>최근 그린 작품 사진을 올려주세요 (최대 3장)</p>
       </div>
       <div class="card">
-        <div class="card-title">📷 내 작품 (<span id="upload-count">0</span> / 5)</div>
+        <div class="card-title">📷 내 작품 (<span id="upload-count">0</span> / 3)</div>
         <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:14px">
           작품 사진이 있으면 AI가 훨씬 정확하게 분석해요.<br>
           2장 정도 권장하지만, 없어도 진단은 진행할 수 있어요.
@@ -2368,7 +2368,7 @@ function playDing(){
 function handleUpload(e){
   const files=Array.from(e.target.files);
   for(const file of files){
-    if(artworks.length>=5){ alert('최대 5장까지 올릴 수 있어요'); break; }
+    if(artworks.length>=3){ alert('최대 3장까지 올릴 수 있어요'); break; }
     if(!file.type.startsWith('image/')) continue;
     const reader=new FileReader();
     reader.onload=ev=>{
@@ -2377,7 +2377,7 @@ function handleUpload(e){
       const img=new Image();
       img.onload=()=>{
         try{
-          const MAX=768;
+          const MAX=640;
           let w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
           if(w>MAX||h>MAX){
             if(w>=h){ h=Math.round(h*MAX/w); w=MAX; }
@@ -2387,7 +2387,7 @@ function handleUpload(e){
           const cx=cv.getContext('2d');
           cx.fillStyle='#FFFFFF'; cx.fillRect(0,0,w,h); // 투명 PNG 대비 흰 배경
           cx.drawImage(img,0,0,w,h);
-          const out=cv.toDataURL('image/jpeg',0.5);
+          const out=cv.toDataURL('image/jpeg',0.4);
           artworks.push(out);
         }catch(err){
           // 혹시 캔버스 처리 실패 시엔 원본이라도 저장 (안전장치)
@@ -2418,16 +2418,16 @@ function renderUploads(){
   });
   // 업로드 라벨 표시 제어 (10장 차면 숨김)
   const label=document.getElementById('upload-label');
-  if(label) label.style.display=artworks.length>=5?'none':'flex';
+  if(label) label.style.display=artworks.length>=3?'none':'flex';
 }
 function finishUpload(){
   var _ac=document.getElementById('artwork-consent'); if(_ac && !_ac.checked){ alert('업로드한 작품이 검사 대상 본인이 직접 그린 것인지 확인(체크)해 주세요.'); return; }
   if(artworks.length<3){
-    alert(`작품 사진이 최소 3장 필요해요. (현재 ${artworks.length}장)\n\nFoxArt 진단은 AI가 아이의 그림을 직접 보고 분석합니다.\n작품이 없으면 정확한 결과를 낼 수 없어요.\n\n※ 5장이면 분석이 더 정확합니다.`);
+    alert(`작품 사진이 최소 3장 필요해요. (현재 ${artworks.length}장)\n\nFoxArt 진단은 AI가 아이의 그림을 직접 보고 분석합니다.\n작품이 없으면 정확한 결과를 낼 수 없어요.\n\n※ 3장이면 분석이 더 정확합니다.`);
     return;
   }
-  if(artworks.length<5){
-    if(!confirm(`작품이 ${artworks.length}장이에요. 5장이면 분석이 더 정확해요.\n이대로 진행할까요?`)) return;
+  if(artworks.length<3){
+    if(!confirm(`작품이 ${artworks.length}장이에요. 3장이면 분석이 더 정확해요.\n이대로 진행할까요?`)) return;
   }
   submitQuiz();
 }
@@ -2495,7 +2495,7 @@ async function submitQuiz(){
 
   // 작품 이미지를 멀티모달 content로 구성 (백그라운드 함수라 시간 여유 있음, 최대 3장)
   const userContent=[{type:'text',text:prompt}];
-  const _artForAI = artworks.slice(0,5);
+  const _artForAI = artworks.slice(0,3);
   if(_artForAI.length>0){
     userContent.push({type:'text',text:`\n\n아래는 ${studentName} ${isAdult?'참여자':'학생'}의 실제 작품 ${_artForAI.length}점입니다. 작품의 색채·구성·주제·표현 방식을 분석에 반영해 주세요.`});
     _artForAI.forEach(src=>{
