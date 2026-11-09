@@ -248,11 +248,49 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
 .winners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 22px; }
 .winner { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: 0 14px 32px -22px rgba(18, 41, 107, 0.45); }
 .winner-photo { aspect-ratio: 4 / 3; background: var(--tint); }
-.winner-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.winner-photo img { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--tint); }
 .winner figcaption { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 3px; }
 .w-award { align-self: flex-start; margin-bottom: 4px; font-size: 13px; font-weight: 700; color: #fff; background: var(--blue); padding: 4px 12px; border-radius: 999px; }
 .w-name { font-size: 19px; font-weight: 700; color: var(--ink); }
 .w-title { font-size: 15px; color: var(--muted); }
+.winner-search { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin: 0 0 30px; }
+.winner-search input { flex: 1 1 260px; max-width: 440px; padding: 13px 18px; border: 1px solid var(--line); border-radius: 999px; font-size: 15px; font-family: inherit; background: var(--surface); color: var(--ink); }
+.winner-search input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(38,71,201,.15); }
+.winner-search .s-msg { font-size: 14px; color: var(--muted); }
+.winners-empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 16px; }
+.award-group { margin: 0 0 40px; }
+.award-group:last-child { margin-bottom: 0; }
+.award-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 12px; margin: 0 0 18px; padding: 0 0 12px; border-bottom: 2px solid var(--line); }
+.award-head h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(22px, 3vw, 30px); color: var(--navy); }
+.award-sub { font-size: 14px; font-weight: 600; color: var(--blue); }
+.award-count { margin-left: auto; font-size: 14px; font-weight: 700; color: #fff; background: var(--navy); padding: 3px 12px; border-radius: 999px; }
+/* ---------- review (심사평·심사기준) ---------- */
+.review-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 56px; align-items: start; }
+.review-grid h3 { font-family: var(--display); font-weight: 400; font-size: clamp(20px,2.6vw,26px); color: var(--navy); margin: 0 0 18px; }
+.review-intro { color: var(--ink); margin: 0 0 22px; line-height: 1.75; }
+.sera-list { list-style: none; margin: 0 0 20px; padding: 0; }
+.sera-list li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+.sera-list li:last-child { border-bottom: 1px solid var(--line); }
+.sera-badge { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 18px; color: #fff; }
+.sera-badge.s { background: var(--blue); }
+.sera-badge.e { background: var(--red); }
+.sera-badge.r { background: var(--navy); }
+.sera-badge.a { background: #E0A100; }
+.sera-list .lbl { font-weight: 700; color: var(--navy); }
+.sera-list .lbl small { font-weight: 600; color: var(--blue); margin-left: 6px; font-size: 13px; }
+.sera-list .desc { display: block; margin-top: 3px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.sera-badge.p { background: #138A72; }
+.sera-badge.c { background: #6D4AA6; }
+.sera-badge.g { background: #C96A1B; }
+.judges { margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--line); }
+.judges h3 { font-family: var(--display); font-weight: 400; font-size: clamp(20px,2.6vw,26px); color: var(--navy); margin: 0 0 20px; }
+.judge-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px 32px; }
+.judge-list li { display: flex; flex-direction: column; gap: 3px; padding: 14px 0; border-top: 1px solid var(--line); }
+.judge-list .j-name { font-weight: 700; color: var(--navy); font-size: 16px; }
+.judge-list .j-role { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.review-comment p { line-height: 1.85; margin: 0 0 16px; color: var(--ink); }
+.review-comment .sign { margin-top: 24px; font-weight: 700; color: var(--navy); }
+@media (max-width: 760px){ .review-grid { grid-template-columns: minmax(0,1fr); gap: 40px; } }
 /* ---------- kakao floating button ---------- */
 .kakao-fab { position: fixed; right: 20px; bottom: 24px; z-index: 60; display: flex; align-items: center; gap: 10px; padding: 12px 18px 12px 14px; background: #FEE500; color: #191600; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 15px; box-shadow: 0 10px 26px -8px rgba(0,0,0,0.35); transition: transform .15s ease, box-shadow .15s ease; }
 .kakao-fab:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(0,0,0,0.42); }
@@ -272,6 +310,7 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
       <a href="#overview">공모 안내</a>
       <a href="#schedule">일정</a>
       <a href="#awards">시상내역</a>
+      <a href="#review">심사평</a>
       <a href="#winners">수상자 발표</a>
       <a href="#apply">접수방법</a>
       <a href="#contact">문의</a>
@@ -410,7 +449,7 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
 <section class="sec" id="awards">
   <div class="wrap">
     <h2>시상내역</h2>
-    <p class="sec-intro">네 개의 상과 함께, 수상자에게는 전시와 장학금 혜택이 주어집니다.</p>
+    <p class="sec-intro">일곱 개의 상과 함께, 수상자에게는 전시와 장학금 혜택이 주어집니다.</p>
     <div class="awards-grid">
       <ul class="awards">
         <li>
@@ -433,12 +472,27 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
           <div><span class="en-name">Achievement Award</span><span class="ko-name">성취상</span></div>
           <span class="giver">ALPHA회장상</span>
         </li>
+        <li>
+          <svg class="medal" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="var(--blue)"/><path d="M24 11l3.9 8 8.8 1.2-6.4 6.1 1.6 8.7L24 30.8 16.1 35l1.6-8.7-6.4-6.1L20.1 19z" fill="#fff"/></svg>
+          <div><span class="en-name">Expression Award</span><span class="ko-name">표현상</span></div>
+          <span class="giver">UN FLML 총재상</span>
+        </li>
+        <li>
+          <svg class="medal" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="var(--red)"/><path d="M24 11l3.9 8 8.8 1.2-6.4 6.1 1.6 8.7L24 30.8 16.1 35l1.6-8.7-6.4-6.1L20.1 19z" fill="#fff"/></svg>
+          <div><span class="en-name">Color Award</span><span class="ko-name">색채상</span></div>
+          <span class="giver">UN FLML 총재상</span>
+        </li>
+        <li>
+          <svg class="medal" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="var(--blue)"/><path d="M24 11l3.9 8 8.8 1.2-6.4 6.1 1.6 8.7L24 30.8 16.1 35l1.6-8.7-6.4-6.1L20.1 19z" fill="#fff"/></svg>
+          <div><span class="en-name">Composition Award</span><span class="ko-name">구성상</span></div>
+          <span class="giver">UN FLML 총재상</span>
+        </li>
       </ul>
 
       <div class="benefits">
         <h3>수상자 혜택</h3>
         <ul>
-          <li>수상자 전원에게 파리, 도쿄, 뉴욕 중 전시회 행사에 참가할 경우 <b>50만원의 장학금</b>을 지원합니다.</li>
+          <li>수상자 전원에게 파리, 도쿄, 뉴욕 중 전시회 투어 행사에 참가할 경우 <b>50만원의 장학금</b>을 지원합니다.</li>
           <li>수상자 중 3점은 추첨을 통해 <b>12월 알파갤러리 무료 전시</b> 기회가 주어집니다.</li>
           <li>모든 수상자에게 <b>상장</b>이 수여됩니다.<span class="sub">시상식은 전시회 리셉션에서 진행됩니다.</span></li>
         </ul>
@@ -447,31 +501,948 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
   </div>
 </section>
 
+<!-- REVIEW -->
+<section class="sec" id="review">
+  <div class="wrap">
+    <h2>심사평</h2>
+    <div class="review-grid">
+      <div class="review-criteria">
+        <h3>심사기준</h3>
+        <p class="review-intro">폭스아트는 아이를 단순히 ‘기술을 배우는 학생’이 아니라 ‘자기 이야기를 가진 작가’로 봅니다. 그래서 모든 작품을 일곱 가지 눈으로 바라봅니다 — 이야기와 마음을 담은 세라(SERA), 그리고 그것을 완성하는 조형의 힘까지.</p>
+        <ul class="sera-list">
+          <li><span class="sera-badge s">S</span><div><span class="lbl">Story<small>스토리상</small></span><span class="desc">작품에 자신만의 이야기가 담겼는가. 주제를 자기 경험과 생각으로 풀어낸 서사의 힘.</span></div></li>
+          <li><span class="sera-badge e">E</span><div><span class="lbl">Empathy<small>공감상</small></span><span class="desc">사람·동물·자연·세상을 향한 따뜻한 시선. 작품이 보는 이의 마음을 움직이는가.</span></div></li>
+          <li><span class="sera-badge r">R</span><div><span class="lbl">Resilience<small>회복상</small></span><span class="desc">어려움과 상처를 딛고 다시 피어나는 희망. 치유와 회복의 메시지.</span></div></li>
+          <li><span class="sera-badge a">A</span><div><span class="lbl">Achievement<small>성취상</small></span><span class="desc">도전과 노력, 끝까지 해내는 힘. 꿈을 향해 나아가는 의지.</span></div></li>
+          <li><span class="sera-badge p">표</span><div><span class="lbl">Expression<small>표현상</small></span><span class="desc">대상을 자기만의 방식으로 풀어낸 개성 있는 표현.</span></div></li>
+          <li><span class="sera-badge c">색</span><div><span class="lbl">Color<small>색채상</small></span><span class="desc">색의 조화와 감정이 살아 있는 화면.</span></div></li>
+          <li><span class="sera-badge g">구</span><div><span class="lbl">Composition<small>구성상</small></span><span class="desc">공간을 짜임새 있게 담아낸 구성의 힘.</span></div></li>
+        </ul>
+      </div>
+      <div class="review-comment">
+        <h3>심사평</h3>
+        <p>올해도 아이들은 저마다의 세상을 그려 주었습니다. 누구는 상처 입은 생명에게 손을 내밀었고, 누구는 전쟁 대신 피어나는 꽃을, 누구는 자신을 꼭 닮은 풍경을 담았습니다.</p>
+        <p>심사의 기준은 ‘잘 그린 그림’이 아니라 ‘자기 이야기가 살아 있는 그림’이었습니다. 기술의 완성도보다, 그 안에 담긴 마음과 생각 — 이야기(Story), 공감(Empathy), 회복(Resilience), 성취(Achievement) — 를 먼저 보았습니다.</p>
+        <p>주제를 진지하게 고민하고 그것을 그림이라는 언어로 표현해 본 경험, 그 자체가 이미 값진 성취입니다. 자기만의 이야기를 용기 있게 그려 낸 모든 작은 작가들에게 따뜻한 박수를 보냅니다.</p>
+        <p class="sign">— 2026년 11월, FoxArt 심사위원회</p>
+      </div>
+    </div>
+
+    <div class="judges">
+      <h3>심사위원</h3>
+      <ul class="judge-list">
+        <li><span class="j-name">김은주</span><span class="j-role">UN FLML NGO 사무총장</span></li>
+        <li><span class="j-name">황규완</span><span class="j-role">UN FLML NGO 고문 · 미술 분과 위원장</span></li>
+        <li><span class="j-name">안우정</span><span class="j-role">FOXART 대표</span></li>
+        <li><span class="j-name">전하진</span><span class="j-role">SDX 이사장</span></li>
+        <li><span class="j-name">김순기</span><span class="j-role">한국서화관 갤러리 관장 · 대표</span></li>
+        <li><span class="j-name">Anna Filimonova</span><span class="j-role">École de Dessin Classique (Paris) CEO</span></li>
+        <li><span class="j-name">Nathalie Leybina</span><span class="j-role">Classical Drawing School (Paris) Director</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- WINNERS -->
 <section class="sec alt" id="winners">
   <div class="wrap">
     <h2>수상자 발표</h2>
-    <p class="sec-intro">수상자와 수상작은 11월 10일(화) 이곳에 발표됩니다.</p>
+    <p class="sec-intro">2026 한-프랑스 미술교류 공모전 수상자와 수상작입니다. <small style="display:block;margin-top:6px;color:var(--muted);font-size:14px">위례 · 감일 · 선정릉 · 외부·특별출품 전 부문 수상작입니다.</small></p>
 
-    <div class="winners-wait" id="winnersWait">
+    <div class="winners-wait" id="winnersWait" hidden>
       <p class="wait-dday" id="winnersDday" aria-live="polite">수상자 발표를 준비 중입니다</p>
       <p class="wait-note">발표일에 수상자 명단과 작품 사진이 이 자리에 공개됩니다.</p>
     </div>
 
-    <!--
-      발표일(11/10)에 아래 갤러리에 수상자 명단과 작품 사진을 채웁니다.
-      준비되면 사진을 저에게 주시면 카드로 넣어드립니다.
-    -->
-    <div class="winners-grid" id="winnersGrid" hidden>
-      <figure class="winner">
-        <div class="winner-photo"><img src="수상작_사진주소.jpg" alt="수상작 제목"></div>
-        <figcaption>
-          <span class="w-award">스토리상</span>
-          <span class="w-name">수상자 이름</span>
-          <span class="w-title">작품 제목</span>
-        </figcaption>
-      </figure>
+    <div class="winner-search">
+      <input type="search" id="winnerSearch" placeholder="🔍 이름 또는 작품 제목으로 검색" aria-label="수상자 검색" autocomplete="off">
+      <span class="s-msg" id="winnerSearchMsg" aria-live="polite"></span>
     </div>
+    <div class="winners-gallery" id="winnersGrid">
+      <div class="award-group">
+        <div class="award-head">
+          <h3>스토리상</h3>
+          <span class="award-sub">Story Award · FOXART 대표자상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_01.jpg" alt="사랑이 자라나는 지구 - 임소이" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">임소이</span>
+            <span class="w-title">사랑이 자라나는 지구</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_06.jpg" alt="녹아내리는 내일 앞에서 - 김지민" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김지민</span>
+            <span class="w-title">녹아내리는 내일 앞에서</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_10.jpg" alt="포성 대신 꽃이 피는 날 - 조다언" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조다언</span>
+            <span class="w-title">포성 대신 꽃이 피는 날</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_15.jpg" alt="삶의 결 - 천소원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">천소원</span>
+            <span class="w-title">삶의 결</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_25.jpg" alt="풀잎 아래 또 하나의 도시 - 황하준" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">황하준</span>
+            <span class="w-title">풀잎 아래 또 하나의 도시</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_03.jpg" alt="지구를 굴리는 작은 힘 - 조하윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조하윤</span>
+            <span class="w-title">지구를 굴리는 작은 힘</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_32.jpg" alt="사라지기 전에 담고 싶은 것 - 최하은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최하은</span>
+            <span class="w-title">사라지기 전에 담고 싶은 것</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_31.jpg" alt="파리, 일상이 머무는 풍경 - 최예원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최예원</span>
+            <span class="w-title">파리, 일상이 머무는 풍경</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_01.jpg" alt="손안에 화합 - 공은우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">공은우</span>
+            <span class="w-title">손안에 화합</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_02.jpg" alt="바다를 지켜줘 - 배선우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">배선우</span>
+            <span class="w-title">바다를 지켜줘</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_03.jpg" alt="내 꿈은 수학자 - 김태이" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김태이</span>
+            <span class="w-title">내 꿈은 수학자</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_04.jpg" alt="숲을 지켜요 - 장나린" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">장나린</span>
+            <span class="w-title">숲을 지켜요</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_05.jpg" alt="더 나은 지구 - 정제인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정제인</span>
+            <span class="w-title">더 나은 지구</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_06.jpg" alt="신기한 동물나라 - 안도언" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">안도언</span>
+            <span class="w-title">신기한 동물나라</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_22.jpg" alt="아직 도착할 곳을 쓰는 중 - 김아람, 권소미, 천은선" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김아람, 권소미, 천은선</span>
+            <span class="w-title">아직 도착할 곳을 쓰는 중</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>공감상</h3>
+          <span class="award-sub">Empathy Award · SDX재단이사장상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_05.jpg" alt="숲이 내어 준 자리 - 최혜인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최혜인</span>
+            <span class="w-title">숲이 내어 준 자리</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_08.jpg" alt="Help (도와줘) - 배사랑" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">배사랑</span>
+            <span class="w-title">Help (도와줘)</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_11.jpg" alt="사랑이 피는 정원 - 조다윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조다윤</span>
+            <span class="w-title">사랑이 피는 정원</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_23.jpg" alt="물결 아래 이어지는 생명 - 최지원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최지원</span>
+            <span class="w-title">물결 아래 이어지는 생명</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_30.jpg" alt="엄마랑 무지개 생선 굽는 날! - 이우진" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이우진</span>
+            <span class="w-title">엄마랑 무지개 생선 굽는 날!</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_41.jpg" alt="Two Too (두 개의 너무 다른) - 문희" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">문희</span>
+            <span class="w-title">Two Too (두 개의 너무 다른)</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_36.jpg" alt="품 안에 머무는 온기 - 김서연" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김서연</span>
+            <span class="w-title">품 안에 머무는 온기</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_07.jpg" alt="동물들이 행복한 나라 - 서유은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">서유은</span>
+            <span class="w-title">동물들이 행복한 나라</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_08.jpg" alt="거실은 수족관 - 양진우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">양진우</span>
+            <span class="w-title">거실은 수족관</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_09.jpg" alt="바다가 깨끗한 세상 - 최서우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최서우</span>
+            <span class="w-title">바다가 깨끗한 세상</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_10.jpg" alt="미술로 하나되어 - 이연희" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이연희</span>
+            <span class="w-title">미술로 하나되어</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_11.jpg" alt="동화 세상 - 최지민" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최지민</span>
+            <span class="w-title">동화 세상</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_12.jpg" alt="미래의 지구 - 이예진" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이예진</span>
+            <span class="w-title">미래의 지구</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_01.jpg" alt="지켜줘, 우리의 바다 친구들! - 최선" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최선</span>
+            <span class="w-title">지켜줘, 우리의 바다 친구들!</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_03.jpg" alt="지구를 향한 따뜻한 심장소리 - 한지민" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">한지민</span>
+            <span class="w-title">지구를 향한 따뜻한 심장소리</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_04.jpg" alt="마법의 숲을 걷는 시간 - 김재이" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김재이</span>
+            <span class="w-title">마법의 숲을 걷는 시간</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_05.jpg" alt="동물 친구들의 푸른 지구 - 김찬이" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김찬이</span>
+            <span class="w-title">동물 친구들의 푸른 지구</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_03.jpg" alt="문어와 우당탕 바다 대청소 - 조민하" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조민하</span>
+            <span class="w-title">문어와 우당탕 바다 대청소</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_10.jpg" alt="THANKS TO EARTH♡ - 김현정" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김현정</span>
+            <span class="w-title">THANKS TO EARTH♡</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_11.jpg" alt="하나의 씨앗, 두 나라의 미래 - 유계연" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">유계연</span>
+            <span class="w-title">하나의 씨앗, 두 나라의 미래</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_12.jpg" alt="안녕, 봉주르 - 주찬영" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">주찬영</span>
+            <span class="w-title">안녕, 봉주르</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_13.jpg" alt="어린왕자와 할머니 - 박경숙" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박경숙</span>
+            <span class="w-title">어린왕자와 할머니</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_14.jpg" alt="맛있게 먹고, 남기지 않아요! - 류승윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">류승윤</span>
+            <span class="w-title">맛있게 먹고, 남기지 않아요!</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_15.jpg" alt="모두가 행복한 세상 - 정하린" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정하린</span>
+            <span class="w-title">모두가 행복한 세상</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>회복상</h3>
+          <span class="award-sub">Resilience Award · UN FLML 총재상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_02.jpg" alt="꽃의 선율 - 도예성" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">도예성</span>
+            <span class="w-title">꽃의 선율</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_04.jpg" alt="너의 자리를 비워둘게 - 안젤라" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">안젤라</span>
+            <span class="w-title">너의 자리를 비워둘게</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_07.jpg" alt="나무가 품은 시간 - 송다인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">송다인</span>
+            <span class="w-title">나무가 품은 시간</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_09.jpg" alt="내가 도와줄게 - 배희망" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">배희망</span>
+            <span class="w-title">내가 도와줄게</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_12.jpg" alt="오래된 숲의 따뜻한 눈빛 - 양세현" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">양세현</span>
+            <span class="w-title">오래된 숲의 따뜻한 눈빛</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_17.jpg" alt="한 거리, 두 개의 내일 - 권순율" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">권순율</span>
+            <span class="w-title">한 거리, 두 개의 내일</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_19.jpg" alt="햇살이 쉬어 가는 자리 - 서인혜" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">서인혜</span>
+            <span class="w-title">햇살이 쉬어 가는 자리</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_16.jpg" alt="나에게 닿는 길 - 허인경" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">허인경</span>
+            <span class="w-title">나에게 닿는 길</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_13.jpg" alt="열기구 타고 세계여행 - 김다은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김다은</span>
+            <span class="w-title">열기구 타고 세계여행</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_14.jpg" alt="미래의 도시 - 박재윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박재윤</span>
+            <span class="w-title">미래의 도시</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_15.jpg" alt="바다 청소하는 날 - 송지유" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">송지유</span>
+            <span class="w-title">바다 청소하는 날</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_16.jpg" alt="모두 손잡고 - 심상헌" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">심상헌</span>
+            <span class="w-title">모두 손잡고</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_17.jpg" alt="물고기 바다 - 이채안" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이채안</span>
+            <span class="w-title">물고기 바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_18.jpg" alt="바다 친구들을 사랑해 - 정은호" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정은호</span>
+            <span class="w-title">바다 친구들을 사랑해</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_02.jpg" alt="바다의 아픔을 들어주세요 - 허준원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">허준원</span>
+            <span class="w-title">바다의 아픔을 들어주세요</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_01.jpg" alt="깨진 조각에서 피어나는 지구의 희망 - 김예나" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김예나</span>
+            <span class="w-title">깨진 조각에서 피어나는 지구의 희망</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_04.jpg" alt="우리아이들의 놀이터 - 조아인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조아인</span>
+            <span class="w-title">우리아이들의 놀이터</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_06.jpg" alt="우리 손으로 만들어갈 수 있어요 - 조윤태" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조윤태</span>
+            <span class="w-title">우리 손으로 만들어갈 수 있어요</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_07.jpg" alt="깊은곳도 아름다워야 할 바다 - 민지안" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">민지안</span>
+            <span class="w-title">깊은곳도 아름다워야 할 바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_08.jpg" alt="시간이 얼마 남지 않았어요 - 김지안" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김지안</span>
+            <span class="w-title">시간이 얼마 남지 않았어요</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_16.jpg" alt="Ripple of Will - 김수정" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김수정</span>
+            <span class="w-title">Ripple of Will</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_17.jpg" alt="MY MICROCOSM - REMAIN 04 - WINNIE KIM" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">WINNIE KIM</span>
+            <span class="w-title">MY MICROCOSM - REMAIN 04</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_18.jpg" alt="Sprout (움틤) - 유혜원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">유혜원</span>
+            <span class="w-title">Sprout (움틤)</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_19.jpg" alt="바람타고 행복찾아 - KO KATHERINE K" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">KO KATHERINE K</span>
+            <span class="w-title">바람타고 행복찾아</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_20.jpg" alt="Quiet Thread - 김주하" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김주하</span>
+            <span class="w-title">Quiet Thread</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_21.jpg" alt="기후위리와 자연의 회생 - 박철완" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박철완</span>
+            <span class="w-title">기후위리와 자연의 회생</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>성취상</h3>
+          <span class="award-sub">Achievement Award · ALPHA회장상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_13.jpg" alt="세계를 딛고, 한계를 넘어 - 김강준" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김강준</span>
+            <span class="w-title">세계를 딛고, 한계를 넘어</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_14.jpg" alt="무엇보다 빛나는 하루 - 박재윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박재윤</span>
+            <span class="w-title">무엇보다 빛나는 하루</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_20.jpg" alt="아직 도착하지 않은 세계를 향해 - 나영채" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">나영채</span>
+            <span class="w-title">아직 도착하지 않은 세계를 향해</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_22.jpg" alt="답을 찾아가는 시간 - 배승운" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">배승운</span>
+            <span class="w-title">답을 찾아가는 시간</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_24.jpg" alt="물의 저항을 넘어 - 전나래" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">전나래</span>
+            <span class="w-title">물의 저항을 넘어</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_26.jpg" alt="작은 공으로 이어지는 우리 - 남연서" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">남연서</span>
+            <span class="w-title">작은 공으로 이어지는 우리</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_34.jpg" alt="서로 다른 생명이 머무는 곳 - 김소율" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김소율</span>
+            <span class="w-title">서로 다른 생명이 머무는 곳</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_19.jpg" alt="깨끗한 우리바다 - 김별" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김별</span>
+            <span class="w-title">깨끗한 우리바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_20.jpg" alt="숲과 하나된 바다 - 노이현" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">노이현</span>
+            <span class="w-title">숲과 하나된 바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_21.jpg" alt="바다를 보며.. - 이예나" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이예나</span>
+            <span class="w-title">바다를 보며..</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_22.jpg" alt="하나된 세상 - 정주영" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정주영</span>
+            <span class="w-title">하나된 세상</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_23.jpg" alt="재생에너지로 환경을 보호해줘 - 지은우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">지은우</span>
+            <span class="w-title">재생에너지로 환경을 보호해줘</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_24.jpg" alt="화합 - 황시호" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">황시호</span>
+            <span class="w-title">화합</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_02.jpg" alt="우리는 휠휠 자라나는 학생입니다 - 정이태" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정이태</span>
+            <span class="w-title">우리는 휠휠 자라나는 학생입니다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_23.jpg" alt="하트 모티브 정원 - 인서희" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">인서희</span>
+            <span class="w-title">하트 모티브 정원</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>표현상</h3>
+          <span class="award-sub">Expression Award · UN FLML 총재상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_28.jpg" alt="빛의 윤곽 - 유찬희" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">유찬희</span>
+            <span class="w-title">빛의 윤곽</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_33.jpg" alt="손길이 빚는 미소 - 박가은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박가은</span>
+            <span class="w-title">손길이 빚는 미소</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_37.jpg" alt="가시 곁에도 생명은 머문다 - 이예솔" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이예솔</span>
+            <span class="w-title">가시 곁에도 생명은 머문다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_38.jpg" alt="Happy Time with Plush - 장하람" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">장하람</span>
+            <span class="w-title">Happy Time with Plush</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_40.jpg" alt="우리의 여름은 함께 뛴다 - 이주안" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이주안</span>
+            <span class="w-title">우리의 여름은 함께 뛴다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_25.jpg" alt="안전한 도시 - 서지호" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">서지호</span>
+            <span class="w-title">안전한 도시</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_26.jpg" alt="건강한 숲속,,,우리나라 - 우리아" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">우리아</span>
+            <span class="w-title">건강한 숲속,,,우리나라</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_27.jpg" alt="사랑하는 마음 - 이서아" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이서아</span>
+            <span class="w-title">사랑하는 마음</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_28.jpg" alt="동물이 좋아요 - 이해나" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이해나</span>
+            <span class="w-title">동물이 좋아요</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_29.jpg" alt="지구 지킴이_하은 - 최하은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">최하은</span>
+            <span class="w-title">지구 지킴이_하은</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_30.jpg" alt="파리에 간 시우와 엄마 - 한시우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">한시우</span>
+            <span class="w-title">파리에 간 시우와 엄마</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_31.jpg" alt="아름다운 숲속 - 허다인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">허다인</span>
+            <span class="w-title">아름다운 숲속</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_06.jpg" alt="지구가 뿔났다! 먹구름과 바다 쓰레기 - 정이든" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">정이든</span>
+            <span class="w-title">지구가 뿔났다! 먹구름과 바다 쓰레기</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_05.jpg" alt="이제는 그림이 되어버린 풍경 - 조용준" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조용준</span>
+            <span class="w-title">이제는 그림이 되어버린 풍경</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_09.jpg" alt="깨끗한 자연을 꿈꾼다 - 하시연" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">하시연</span>
+            <span class="w-title">깨끗한 자연을 꿈꾼다</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>색채상</h3>
+          <span class="award-sub">Color Award · UN FLML 총재상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_29.jpg" alt="열 손끝의 작은 우주 - 김규리" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김규리</span>
+            <span class="w-title">열 손끝의 작은 우주</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_39.jpg" alt="물빛 속 자유 - 장하엘" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">장하엘</span>
+            <span class="w-title">물빛 속 자유</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_32.jpg" alt="지구를 지켜라 - 강현채" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">강현채</span>
+            <span class="w-title">지구를 지켜라</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_33.jpg" alt="산이 좋아 - 권우빈" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">권우빈</span>
+            <span class="w-title">산이 좋아</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_34.jpg" alt="숲속 놀이터 - 노하윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">노하윤</span>
+            <span class="w-title">숲속 놀이터</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_35.jpg" alt="즐거운 소풍 - 박라은" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박라은</span>
+            <span class="w-title">즐거운 소풍</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_36.jpg" alt="깨끗한 도시 - 신근우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">신근우</span>
+            <span class="w-title">깨끗한 도시</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_37.jpg" alt="부캉이가 행복한 바다 - 안하준" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">안하준</span>
+            <span class="w-title">부캉이가 행복한 바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_38.jpg" alt="우리 모두 사랑해요 - 이솜" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이솜</span>
+            <span class="w-title">우리 모두 사랑해요</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+      <div class="award-group">
+        <div class="award-head">
+          <h3>구성상</h3>
+          <span class="award-sub">Composition Award · UN FLML 총재상</span>
+        </div>
+        <div class="winners-grid">
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_18.jpg" alt="바다와 도시 사이의 쉼표 - 백시윤" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">백시윤</span>
+            <span class="w-title">바다와 도시 사이의 쉼표</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_21.jpg" alt="창 너머의 숲, 내 안의 쉼 - 나승채" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">나승채</span>
+            <span class="w-title">창 너머의 숲, 내 안의 쉼</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_35.jpg" alt="물길에 쌓인 시간 - 김예원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김예원</span>
+            <span class="w-title">물길에 쌓인 시간</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/wirye_27.jpg" alt="다시 도는 바퀴, 이어지는 내일 - 조은찬" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">조은찬</span>
+            <span class="w-title">다시 도는 바퀴, 이어지는 내일</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_39.jpg" alt="깨끗한 우리동네 - 김건호" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김건호</span>
+            <span class="w-title">깨끗한 우리동네</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_40.jpg" alt="바다 - 김리원" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김리원</span>
+            <span class="w-title">바다</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_41.jpg" alt="청소하는 호랑이 로봇 - 이선우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이선우</span>
+            <span class="w-title">청소하는 호랑이 로봇</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_42.jpg" alt="우주를 달리는 기차여행 - 이아민" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이아민</span>
+            <span class="w-title">우주를 달리는 기차여행</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_43.jpg" alt="초원의 집 - 김다빛" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김다빛</span>
+            <span class="w-title">초원의 집</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_44.jpg" alt="미래 도시 - 이시환" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">이시환</span>
+            <span class="w-title">미래 도시</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/gamil_45.jpg" alt="바다 개구리 - 박수인" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">박수인</span>
+            <span class="w-title">바다 개구리</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/seonjeong_07.jpg" alt="두 얼굴의 지구, 우리의 선택 - 김민성" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김민성</span>
+            <span class="w-title">두 얼굴의 지구, 우리의 선택</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_24.jpg" alt="함께 피어나는 미래 (Together we Bloom) - 태니K (김태연)" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">태니K (김태연)</span>
+            <span class="w-title">함께 피어나는 미래 (Together we Bloom)</span>
+          </figcaption>
+        </figure>
+        <figure class="winner">
+          <div class="winner-photo"><img src="img/external_25.jpg" alt="세 여인의 working - 김준우" loading="lazy"></div>
+          <figcaption>
+            <span class="w-name">김준우</span>
+            <span class="w-title">세 여인의 working</span>
+          </figcaption>
+        </figure>
+        </div>
+      </div>
+    </div>
+    <p class="winners-empty" id="winnersEmpty" hidden>검색 결과가 없어요. 다른 이름이나 제목으로 찾아보세요.</p>
   </div>
 </section>
 
@@ -650,5 +1621,32 @@ footer { padding: 56px 0 64px; border-top: 1px solid var(--line); }
   <span class="bubble">TALK</span>
   <span class="fab-label">카카오톡 문의</span>
 </a>
+<script>
+(function(){
+  var input = document.getElementById("winnerSearch");
+  if(!input) return;
+  var groups = Array.prototype.slice.call(document.querySelectorAll("#winners .award-group"));
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#winners .winner"));
+  var msg = document.getElementById("winnerSearchMsg");
+  var empty = document.getElementById("winnersEmpty");
+  cards.forEach(function(c){
+    var nm = (c.querySelector(".w-name")||{}).textContent || "";
+    var ti = (c.querySelector(".w-title")||{}).textContent || "";
+    c.setAttribute("data-k", (nm + " " + ti).toLowerCase().replace(/\s+/g,""));
+  });
+  function run(){
+    var q = input.value.trim().toLowerCase().replace(/\s+/g,"");
+    var shown = 0;
+    cards.forEach(function(c){
+      var ok = !q || c.getAttribute("data-k").indexOf(q) > -1;
+      c.hidden = !ok; if(ok) shown++;
+    });
+    groups.forEach(function(g){ g.hidden = !g.querySelector(".winner:not([hidden])"); });
+    if(empty) empty.hidden = !(q && shown === 0);
+    if(msg) msg.textContent = "";
+  }
+  input.addEventListener("input", run);
+})();
+</script>
 </body>
 </html>
